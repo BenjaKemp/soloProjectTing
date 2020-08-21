@@ -1,19 +1,32 @@
-const koa = require('koa');
-const mount = require('koa-mount');
-
-const app = new koa();
+const express = require('express');
 const {
-    MyGraphQLSchema,
-    graphqlHTTP
-} = require('./graphql')
+  ApolloServer, gql
+} =require('apollo-server-express');
+const cors = require('cors')
 
-// The root provides a resolver function for each API endpoint
+const { schema, resolvers } =require( './src');
 
-app.use(mount, '/graphql', graphqlHTTP( {
-    schema: MyGraphQLSchema,
-    graphiql: true
-}));
+const app = express();
+app.use(cors())
 
-app.listen(8000, function () {
-    console.log('Server running on https://localhost:8000')
+const models = require('./database')
+
+
+console.log('schema       ',schema)
+console.log('resolvers       ',resolvers)
+
+
+const server = new ApolloServer({
+    typeDefs: schema,
+    resolvers,
+    context: {
+      models,
+      me: models.users[1],
+    },
+});
+
+server.applyMiddleware({ app, path: '/graphql' });
+
+app.listen(8000, () => {
+    console.log('Apollo Server on http://localhost:8000/graphql');
 });

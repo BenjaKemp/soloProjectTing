@@ -1,30 +1,40 @@
 {
   "name": "soleprojectwebsitebackend",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon app.js"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "My Best Work",
+  "main": "app.js",
   "dependencies": {
+    "apollo-server": "^2.16.1",
     "apollo-server-express": "^2.16.1",
+    "apollo-server-koa": "^2.16.1",
     "express": "^4.17.1",
     "graphql": "^15.3.0",
+    "graphql-import": "^1.0.2",
     "graphql-tag": "^2.11.0",
     "graphql-tools": "^6.0.18",
+    "is-promise": "^4.0.0",
     "koa": "^2.13.0",
     "koa-graphql": "^0.8.0",
     "koa-mount": "^4.0.0",
+    "koa-router": "^9.4.0",
+    "lodash": "^4.17.20",
     "mongoose": "^5.10.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "uuid": "^8.3.0"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.10.5",
-    "@babel/core": "^7.11.1",
-    "@babel/node": "^7.10.5",
-    "@babel/preset-env": "^7.11.0"
-  }
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenjaKemp/soloProjectTing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenjaKemp/soloProjectTing/issues"
+  },
+  "homepage": "https://github.com/BenjaKemp/soloProjectTing#readme"
 }
