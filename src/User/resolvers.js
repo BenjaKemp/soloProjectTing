@@ -1,4 +1,4 @@
-const userResolver = {
+module.exports = {
   Query: {
       users: (parent, args, {
         models
@@ -20,6 +20,10 @@ const userResolver = {
     },
 
     User: {
+      username: (_, __, context) => {
+        console.log('this is context     ',context)
+        return 'context.me.firstname'
+      },
       messages: (user, args, {
         models
       }) => {
@@ -29,4 +33,3 @@ const userResolver = {
       },
     },
 }
-module.exports = userResolver 

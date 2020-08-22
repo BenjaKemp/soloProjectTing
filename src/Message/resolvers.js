@@ -1,4 +1,4 @@
-const messageResolver = {
+module.exports = {
     Query: {
         messages: (parents, args, { models }) => {
           return Object.values(models.messages);
@@ -8,7 +8,7 @@ const messageResolver = {
         },
     },
       Mutation: {
-        createMessage: (parent, { text }, { me, models }) => {
+        createMessage: (parent, { text }, {  models }) => {
           const id = uuidv4();
           const message = {
               id,
@@ -34,4 +34,4 @@ const messageResolver = {
         },
       }
     }
-    module.exports = { messageResolver }
+    

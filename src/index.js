@@ -23,8 +23,8 @@ const linkSchema = gql `
     _: Boolean
   }
 `;
-const schema = _.merge(linkSchema, userSchema, messageSchema)
-const resolvers = _.merge(userResolver, messageResolver)
+const schema = [linkSchema, userSchema, messageSchema]
+const resolvers = [userResolver, messageResolver]
 
 
 
