@@ -6,11 +6,8 @@ module.exports = {
         return Object.values(models.users);
       },
       user: async (parent, { id }, { models: { models: { User } } }) => {
-        const existingUser = await User.findOne({ _id: id }).exec()
-        console.log('this is id      ',id)
-        console.log('this is User      ',User)
-        console.log('this is existingUser      ',existingUser)
-        return models.users[id];
+        const {_id, username} = await User.findOne({ _id: id }).exec()
+        return { id: _id, username };
       },
       me: (parent, args, { me }) => {
         return me;
@@ -18,7 +15,8 @@ module.exports = {
     },
     User: {
       username: (_, __, context) => {
-        return `${_.name}${_.id}` 
+        console.log('this is parent      ',_)
+        return `${_.username} and then whatever else` 
       },
       messages: (user, args, { models }) => {
         return Object.values(models.messages).filter(

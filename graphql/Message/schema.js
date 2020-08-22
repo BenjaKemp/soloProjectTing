@@ -6,12 +6,21 @@ module.exports = gql`
     message(id: ID!): Message!
   }
   extend type Mutation {
-    createMessage(text: String!): Message!
+    createMessage(input: CreateMessageInput!): CreateMessagePayload!
     deleteMessage(id: ID!): Boolean!
   }
   type Message {
     id: ID!
     text: String!
     user: User!
+  }
+  input CreateMessageInput {
+    text: String!,
+    tags: [String],
+    author: ID!,
+    title: String
+  }
+  type CreateMessagePayload {
+    messageId: ID
   }
 `
