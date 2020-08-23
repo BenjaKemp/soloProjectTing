@@ -8,24 +8,23 @@ module.exports = {
         },
     },
       Mutation: {
-        createMessage: (parent, { text }, {  models }) => {
-          const id = uuidv4();
-          const message = {
-              id,
-              text,
-              userId: me.id,
-          };
-          models.messages[id] = message;
-          models.users[me.id].messageIds.push(id);
-          return message;
+        createMessage: (parent, { input:{text, tags, userId, title} }, { models: { Message }  }) => {
+          const createdMessage = new Message({
+            text,
+            date: new Date(),
+            tags,
+            author: userId,
+            title
+          });
+          createdMessage.save()
+          return { messageId: createdMessage._id }
         },
-        deleteMessage: (parent, { id }, { models }) => {
-            const { [id]: message, ...otherMessages } = models.messages;
-            if (!message) {
-                return false;
-            }
-            models.messages = otherMessages;
-            return true;
+        updateMessage: async (_, { input }, { models: { Message } }) => {
+          const existingMessage = await Message.findOne({ name: name }).exec();
+        },
+        deleteMessage: async (_, { id }, { models: { Message } }) => {
+          const deletedMessage = await Message.findOneAndDelete({ _id: id }).exec();
+          return { id: deletedMessage._id, confirmation: `${deletedMessage.title} was removed` }
         },
       },
       Message: {

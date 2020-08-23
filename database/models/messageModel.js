@@ -5,7 +5,7 @@ const messageSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  content: {
+  text: {
     type: String,
     required: true,
   },
@@ -13,7 +13,15 @@ const messageSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
   },
+  tags : {
+    type: Array,
+    required: false
+  },
+  date: {
+    type: String,
+    required: false
+  }
 });
 
-module.exports = mongoose.model('message', messageSchema);
+module.exports = mongoose.model('Message', messageSchema);
 

@@ -6,11 +6,8 @@ module.exports = {
         return Object.values(models.users);
       },
       user: async (parent, { id }, { models: { models: { User } } }) => {
-        const existingUser = await User.findOne({ _id: id }).exec()
-        console.log('this is id      ',id)
-        console.log('this is User      ',User)
-        console.log('this is existingUser      ',existingUser)
-        return models.users[id];
+        const {_id, username} = await User.findOne({ _id: id }).exec()
+        return { id: _id, username };
       },
       me: (parent, args, { me }) => {
         return me;
@@ -18,7 +15,7 @@ module.exports = {
     },
     User: {
       username: (_, __, context) => {
-        return `${_.name}${_.id}` 
+        return `${_.username} and then whatever else` 
       },
       messages: (user, args, { models }) => {
         return Object.values(models.messages).filter(
@@ -27,7 +24,7 @@ module.exports = {
       },
     },
     Mutation: {
-      createUser: async (_, { input: { name, password } }, { models: { models: { User } }}) => {
+      createUser: async (_, { input: { name, password } }, { models: { User }}) => {
         const existingUser = await User.findOne({ name: name }).exec()
         if (existingUser) {
           // we have found someone with that name
@@ -36,6 +33,13 @@ module.exports = {
         const createdUser = new User({ name: name, password: password });
         createdUser.save()
         return createdUser
-      }
+      },
+      updateUser: async (_, { input }, { models: { User } }) =>{
+        const existingUser = await User.findOne({ name: name }).exec();
+      },
+      deleteUser: async (_, { id }, { models: { User } }) => {
+        const deletedUser = await User.findOneAndDelete({ _id: id }).exec();
+        return { id: deletedUser._id, confirmation: `${deletedUser.username} was removed` }
+      },
     }
 }
