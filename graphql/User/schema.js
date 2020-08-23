@@ -8,6 +8,8 @@ module.exports = gql`
   }
   extend type Mutation {
     createUser(input: CreateUserInput): User!
+    updateUser(input: UpdateUserInput) : User!
+    deleteUser(id: ID!): DeleteUserPayload!
   }
   type User {
     id: ID!
@@ -18,4 +20,14 @@ module.exports = gql`
     name: String!
     password: String!
   }
+  input UpdateUserInput {
+    id: ID!
+    username: String
+    whatever: String
+  }
+  type DeleteUserPayload {
+    id: ID!
+    confirmation: String!
+  }
+
 `

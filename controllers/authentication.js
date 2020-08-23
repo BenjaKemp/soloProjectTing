@@ -22,6 +22,9 @@ exports.signin = (req, res, next) => {
 
 exports.signup = ({body : {username, password}}, res, next) => {
 
+    console.log('username     ', username)
+    console.log('password     ', password)
+
     if (!username || !password) {
         return res
             .status(422)

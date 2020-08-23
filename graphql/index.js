@@ -1,5 +1,6 @@
 const { gql } = require('apollo-server-express')
 const _ = require('lodash')
+const {mergeSchemas} = require('graphql-tools')
 
 const {
     userSchema,
@@ -23,6 +24,7 @@ const linkSchema = gql `
     _: Boolean
   }
 `;
+// const otherSchema = _.extend(userSchema, messageSchema, linkSchema)
 const schema = [linkSchema, userSchema, messageSchema]
 const resolvers = [userResolver, messageResolver]
 

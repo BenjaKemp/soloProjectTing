@@ -8,7 +8,7 @@ module.exports = {
         },
     },
       Mutation: {
-        createMessage: (parent, { input:{text, tags, userId, title} }, { models: { models: { Message } } }) => {
+        createMessage: (parent, { input:{text, tags, userId, title} }, { models: { Message }  }) => {
           const createdMessage = new Message({
             text,
             date: new Date(),
@@ -19,13 +19,12 @@ module.exports = {
           createdMessage.save()
           return { messageId: createdMessage._id }
         },
-        deleteMessage: (parent, { id }, { models }) => {
-            const { [id]: message, ...otherMessages } = models.messages;
-            if (!message) {
-                return false;
-            }
-            models.messages = otherMessages;
-            return true;
+        updateMessage: async (_, { input }, { models: { Message } }) => {
+          const existingMessage = await Message.findOne({ name: name }).exec();
+        },
+        deleteMessage: async (_, { id }, { models: { Message } }) => {
+          const deletedMessage = await Message.findOneAndDelete({ _id: id }).exec();
+          return { id: deletedMessage._id, confirmation: `${deletedMessage.title} was removed` }
         },
       },
       Message: {

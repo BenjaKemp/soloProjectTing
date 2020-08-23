@@ -7,7 +7,8 @@ module.exports = gql`
   }
   extend type Mutation {
     createMessage(input: CreateMessageInput!): CreateMessagePayload!
-    deleteMessage(id: ID!): Boolean!
+    updateMessage(input: UpdateMessageInput): Message!
+    deleteMessage(id: ID!): DeleteMessagePayload!
   }
   type Message {
     id: ID!
@@ -22,5 +23,14 @@ module.exports = gql`
   }
   type CreateMessagePayload {
     messageId: ID
+  }
+  input UpdateMessageInput {
+    id: ID!
+    username: String
+    whatever: String
+  }
+  type DeleteMessagePayload {
+    id: ID!
+    confirmation: String!
   }
 `
