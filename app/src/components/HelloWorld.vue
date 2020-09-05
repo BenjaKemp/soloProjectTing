@@ -1,58 +1,68 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div>
+    <v-container>
+      <div class="links">
+        <router-link to="/">home</router-link>
+        
+        <router-link to="settings">settings</router-link>
+      </div>
+      hello
+      <router-view />
+    </v-container>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
-}
-</script>
+import SoundCloud from './soundcloud/Soundcloud';
+import Settings from './settings/Settings';
+  export default {
+    name: 'HelloWorld',
+    components: {
+    SoundCloud,
+    Settings
+    },
+    computed: {
+      propertyComputed () {
+        return this.property
+      }
+    },
+    beforeCreate (){
+      // The beforeCreate hook runs at the very initialization of your component. data has not been made reactive, and events have not been set up yet:
+      console.log('At this point, events and lifecycle have been initialized.')
+    },
+    created () {
+      // You are able to access reactive data and events that are active with the created hook. Templates and Virtual DOM have not yet been mounted or rendered:
+      console.log('At this point, this.property is now reactive and propertyComputed will update.')
+      this.property = 'Example property updated.'
+      console.log('this is router   ',this.$route)
+    },
+    beforeMount() {
+      // The beforeMount hook runs right before the initial render happens and after the template or render functions have been compiled:
+      console.log(`At this point, vm.$el has not been created yet.`)
+    },
+    mounted () {
+      console.log(`At this point, vm.$el has been created and el has been replaced.`);
+      console.log('what is this     ',this.$el) // Example component.
+    },
+    beforeUpdate(){
+    console.log(`At this point, Virtual DOM has not re-rendered or patched yet.`)
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+    },
+    updated () {
+      console.log('The updated hook runs after data changes on your component and the DOM re-renders. Use updated if you need to access the DOM after a property change:')
+    },
+    beforeDestroy() {
+          console.log(`At this point, watchers, child components, and event listeners have not been teared down yet.`)
+    // Perform the teardown procedure for exampleLeakyProperty.
+    // (In this case, effectively nothing)
+      console.log('beforeDestroy is fired right before teardown. Your component will still be fully present and functional.')
+    },
+    destroyed () {
+    console.log(`At this point, watchers, child components, and event listeners have been torn down.`)
+    console.log('this '   ,this)
+    },
+    data: () => ({
+      property: 'Example property.'
+    }),
+  }
+</script>
