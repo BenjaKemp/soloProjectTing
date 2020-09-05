@@ -1,6 +1,6 @@
 <template>
     <div class="components-container">
-        "Hi Ben, Dashboard"
+        "Hi Ben, Settings"
     </div>
 </template>
 

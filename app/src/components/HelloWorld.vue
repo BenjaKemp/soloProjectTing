@@ -1,151 +1,68 @@
 <template>
-  <v-container>
-    <v-row class="text-center">
-      <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
-      </v-col>
-
-      <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
-        </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
-        </p>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          What's next?
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(next, i) in whatsNext"
-            :key="i"
-            :href="next.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ next.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Important Links
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(link, i) in importantLinks"
-            :key="i"
-            :href="link.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ link.text }}
-          </a>
-        </v-row>
-      </v-col>
-
-      <v-col
-        class="mb-5"
-        cols="12"
-      >
-        <h2 class="headline font-weight-bold mb-3">
-          Ecosystem
-        </h2>
-
-        <v-row justify="center">
-          <a
-            v-for="(eco, i) in ecosystem"
-            :key="i"
-            :href="eco.href"
-            class="subheading mx-3"
-            target="_blank"
-          >
-            {{ eco.text }}
-          </a>
-        </v-row>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <v-container>
+      <div class="links">
+        <router-link to="/">home</router-link>
+        
+        <router-link to="settings">settings</router-link>
+      </div>
+      hello
+      <router-view />
+    </v-container>
+  </div>
 </template>
 
 <script>
+import SoundCloud from './soundcloud/Soundcloud';
+import Settings from './settings/Settings';
   export default {
     name: 'HelloWorld',
+    components: {
+    SoundCloud,
+    Settings
+    },
+    computed: {
+      propertyComputed () {
+        return this.property
+      }
+    },
+    beforeCreate (){
+      // The beforeCreate hook runs at the very initialization of your component. data has not been made reactive, and events have not been set up yet:
+      console.log('At this point, events and lifecycle have been initialized.')
+    },
+    created () {
+      // You are able to access reactive data and events that are active with the created hook. Templates and Virtual DOM have not yet been mounted or rendered:
+      console.log('At this point, this.property is now reactive and propertyComputed will update.')
+      this.property = 'Example property updated.'
+      console.log('this is router   ',this.$route)
+    },
+    beforeMount() {
+      // The beforeMount hook runs right before the initial render happens and after the template or render functions have been compiled:
+      console.log(`At this point, vm.$el has not been created yet.`)
+    },
+    mounted () {
+      console.log(`At this point, vm.$el has been created and el has been replaced.`);
+      console.log('what is this     ',this.$el) // Example component.
+    },
+    beforeUpdate(){
+    console.log(`At this point, Virtual DOM has not re-rendered or patched yet.`)
 
+    },
+    updated () {
+      console.log('The updated hook runs after data changes on your component and the DOM re-renders. Use updated if you need to access the DOM after a property change:')
+    },
+    beforeDestroy() {
+          console.log(`At this point, watchers, child components, and event listeners have not been teared down yet.`)
+    // Perform the teardown procedure for exampleLeakyProperty.
+    // (In this case, effectively nothing)
+      console.log('beforeDestroy is fired right before teardown. Your component will still be fully present and functional.')
+    },
+    destroyed () {
+    console.log(`At this point, watchers, child components, and event listeners have been torn down.`)
+    console.log('this '   ,this)
+    },
     data: () => ({
-      ecosystem: [
-        {
-          text: 'vuetify-loader',
-          href: 'https://github.com/vuetifyjs/vuetify-loader',
-        },
-        {
-          text: 'github',
-          href: 'https://github.com/vuetifyjs/vuetify',
-        },
-        {
-          text: 'awesome-vuetify',
-          href: 'https://github.com/vuetifyjs/awesome-vuetify',
-        },
-      ],
-      importantLinks: [
-        {
-          text: 'Documentation',
-          href: 'https://vuetifyjs.com',
-        },
-        {
-          text: 'Chat',
-          href: 'https://community.vuetifyjs.com',
-        },
-        {
-          text: 'Made with Vuetify',
-          href: 'https://madewithvuejs.com/vuetify',
-        },
-        {
-          text: 'Twitter',
-          href: 'https://twitter.com/vuetifyjs',
-        },
-        {
-          text: 'Articles',
-          href: 'https://medium.com/vuetify',
-        },
-      ],
-      whatsNext: [
-        {
-          text: 'Explore components',
-          href: 'https://vuetifyjs.com/components/api-explorer',
-        },
-        {
-          text: 'Select a layout',
-          href: 'https://vuetifyjs.com/getting-started/pre-made-layouts',
-        },
-        {
-          text: 'Frequently Asked Questions',
-          href: 'https://vuetifyjs.com/getting-started/frequently-asked-questions',
-        },
-      ],
+      property: 'Example property.'
     }),
   }
 </script>

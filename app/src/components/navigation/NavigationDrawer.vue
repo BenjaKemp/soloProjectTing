@@ -20,29 +20,27 @@
             <v-list-item-avatar>
               <img src="https://randomuser.me/api/portraits/men/81.jpg">
             </v-list-item-avatar>
-
             <v-list-item-content>
               <v-list-item-title>Application</v-list-item-title>
               <v-list-item-subtitle>Subtext</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-
           <v-divider></v-divider>
-
           <v-list-item
             v-for="item in items"
             :key="item.title"
             link
+            :to="item.route"
           >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
-
             <v-list-item-content>
               <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
+        </router-link>
       </v-navigation-drawer>
 </template>
 
@@ -52,12 +50,12 @@
       return {
         drawer: true,
         items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Photos', icon: 'mdi-image' },
-          { title: 'CV', icon: 'mdi-help-box' },
-          { title: 'Blog', icon: 'mdi-help-box' },
-          { title: 'Soundcloud', icon: 'mdi-help-box' },
-          { title: 'Newsletter', icon: 'mdi-help-box' },
+          { title: 'Dashboard', icon: 'mdi-view-dashboard', route: 'dashboard' },
+          { title: 'Photos', icon: 'mdi-image', route: 'photos' },
+          { title: 'CV', icon: 'mdi-help-box', route: 'cv' },
+          { title: 'Blog', icon: 'mdi-help-box', route: 'blog' },
+          { title: 'Soundcloud', icon: 'mdi-help-box', route: 'soundcloud' },
+          { title: 'Newsletter', icon: 'mdi-help-box', route: 'newsletter' },
         ],
         color: 'primary',
         colors: [
