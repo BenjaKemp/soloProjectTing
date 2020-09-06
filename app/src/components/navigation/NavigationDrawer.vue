@@ -18,7 +18,7 @@
         >
           <v-list-item two-line :class="miniVariant && 'px-0'">
             <v-list-item-avatar>
-              <img src="https://randomuser.me/api/portraits/men/81.jpg">
+              <img src="../../assets/MEMMEMEE.jpeg">
             </v-list-item-avatar>
             <v-list-item-content>
               <v-list-item-title>Application</v-list-item-title>

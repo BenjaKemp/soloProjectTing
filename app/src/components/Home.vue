@@ -1,13 +1,15 @@
 <template>
-  <div>
+ <div>
     <v-container>
+  <main-header/>
+  <navigation-drawer/>
       <div class="links">
-        <router-link to="/">home</router-link>
-        
-        <router-link to="settings">settings</router-link>
+     <router-link to="/">home</router-link>
+     <router-link to="settings">settings</router-link>
       </div>
-      hello
+      <v-main>
       <router-view />
+      </v-main>
     </v-container>
   </div>
 </template>
@@ -15,11 +17,15 @@
 <script>
 import SoundCloud from './soundcloud/Soundcloud';
 import Settings from './settings/Settings';
+import NavigationDrawer from './navigation/NavigationDrawer';
+import MainHeader from './headers/MainHeader';
   export default {
-    name: 'HelloWorld',
+    name: 'Home',
     components: {
     SoundCloud,
-    Settings
+    Settings,
+    MainHeader,
+    NavigationDrawer
     },
     computed: {
       propertyComputed () {
