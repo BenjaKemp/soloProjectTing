@@ -33,4 +33,4 @@ module.exports = gql`
     id: ID!
     confirmation: String!
   }
-`
+`;

@@ -1,5 +1,4 @@
+const userSchema = require('./schema.js');
+const userResolver = require('./resolvers');
 
-const userSchema = require('./schema.js')
-const userResolver = require('./resolvers')
-
-module.exports = { userSchema, userResolver }
+module.exports = { userSchema, userResolver };

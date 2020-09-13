@@ -1,0 +1,5 @@
+mutation updatePlayer($input: UpdatePlayerInput!) {
+    updatePlayer(input: $input) {
+        name
+    }
+}

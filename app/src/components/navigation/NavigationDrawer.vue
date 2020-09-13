@@ -1,10 +1,9 @@
 <template>
-
       <v-navigation-drawer
+      app
+      clipped
         v-model="drawer"
         :color="color"
-        :expand-on-hover="expandOnHover"
-        :mini-variant="miniVariant"
         :right="right"
         :permanent="permanent"
         :src="bg"
@@ -16,16 +15,6 @@
           nav
           class="py-0"
         >
-          <v-list-item two-line :class="miniVariant && 'px-0'">
-            <v-list-item-avatar>
-              <img src="../../assets/MEMMEMEE.jpeg">
-            </v-list-item-avatar>
-            <v-list-item-content>
-              <v-list-item-title>Application</v-list-item-title>
-              <v-list-item-subtitle>Subtext</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-          <v-divider></v-divider>
           <v-list-item
             v-for="item in items"
             :key="item.title"
@@ -56,6 +45,7 @@
           { title: 'Blog', icon: 'mdi-help-box', route: 'blog' },
           { title: 'Soundcloud', icon: 'mdi-help-box', route: 'soundcloud' },
           { title: 'Newsletter', icon: 'mdi-help-box', route: 'newsletter' },
+          { title: 'Players', icon: 'mdi-help-box', route: 'players' },
         ],
         color: 'primary',
         colors: [

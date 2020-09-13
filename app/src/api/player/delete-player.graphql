@@ -1,0 +1,5 @@
+mutation deletePlayer($input: ID) {
+    deletePlayer(input: $input) {
+        name
+    }
+}

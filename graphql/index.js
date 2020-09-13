@@ -1,17 +1,10 @@
-const { gql } = require('apollo-server-express')
-const _ = require('lodash')
-const {mergeSchemas} = require('graphql-tools')
+const { gql } = require('apollo-server-express');
 
-const {
-    userSchema,
-    userResolver
-} = require('./user');
-const { 
-    messageSchema,
-    messageResolver
-} = require( './message');
+const { userSchema, userResolver } = require('./User');
+const { messageSchema, messageResolver } = require('./Message');
+const { playerSchema, playerResolver } = require('./Player');
 
-const linkSchema = gql `
+const linkSchema = gql`
   type Query {
     _: Boolean
   }
@@ -25,9 +18,7 @@ const linkSchema = gql `
   }
 `;
 // const otherSchema = _.extend(userSchema, messageSchema, linkSchema)
-const schema = [linkSchema, userSchema, messageSchema]
-const resolvers = [userResolver, messageResolver]
-
-
+const schema = [linkSchema, userSchema, messageSchema, playerSchema];
+const resolvers = [userResolver, messageResolver, playerResolver];
 
 module.exports = { schema, resolvers }

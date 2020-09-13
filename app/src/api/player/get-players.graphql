@@ -1,0 +1,8 @@
+query { 
+  getPlayers {
+        id
+        playername
+  }
+}
+
+
