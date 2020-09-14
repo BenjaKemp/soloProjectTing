@@ -12,15 +12,13 @@ import { mapState, mapGetters } from 'vuex'
         name: 'Ben'
       }
     },
-    
     computed: {
-        ...mapState({
+      ...mapState({
         players: ({ players }) => players.players,
       }),
       ...mapGetters([
         'players/singlePlayer'
-    ])
-
+      ])
     },
     beforeRouteEnter (f, t, next) {
       next(async (vm) => {

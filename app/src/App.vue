@@ -1,5 +1,8 @@
 <template>
-    <v-app>
+    <v-app v-if="authenticated">
+      <signup />
+    </v-app>
+    <v-app v-else>
       <main-header/>
       <navigation-drawer/>
       <v-main>
@@ -11,21 +14,33 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 import SoundCloud from './components/soundcloud/Soundcloud';
 import Settings from './components/settings/Settings';
 import NavigationDrawer from './components/navigation/NavigationDrawer';
 import MainHeader from './components/partials/headers/MainHeader';
+import Signup from './components/users/Signup';
   export default {
     name: 'Home',
     components: {
     SoundCloud,
     Settings,
     MainHeader,
-    NavigationDrawer
+    NavigationDrawer,
+    Signup
     },
     computed: {
-      propertyComputed () {
-        return this.property
+      ...mapState({
+        user: state => state.login.user
+      }),
+      ...mapGetters({
+        getRoles: 'users/getRoles'
+      })
+    },
+    methods: {
+      authenticated: () => {
+        console.log('this.user     ',this.user)
+        return false
       }
     },
     beforeCreate (){
@@ -36,6 +51,7 @@ import MainHeader from './components/partials/headers/MainHeader';
       // You are able to access reactive data and events that are active with the created hook. Templates and Virtual DOM have not yet been mounted or rendered:
       // console.log('At this point, this.property is now reactive and propertyComputed will update.')
       this.property = 'Example property updated.'
+      console.log('this.user     ',this)
       // console.log('this is router   ',this.$route)
     },
     beforeMount() {
@@ -65,6 +81,6 @@ import MainHeader from './components/partials/headers/MainHeader';
     },
     data: () => ({
       property: 'Example property.'
-    }),
+    })
   }
 </script>

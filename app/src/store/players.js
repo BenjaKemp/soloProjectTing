@@ -9,17 +9,14 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const getters = {
-      singlePlayer: state => (id) => {
-          return state.players.find(player => player._id === id)
-      }
+    singlePlayer: state => (id) => {
+        return state.players.find(player => player._id === id)
+    }
 }
 const mutations = {
     init(state, players) {
-        console.log('this is state    ',state)
-        console.log('this is players    ',players)
         state.players = players
     },
-
 }
 const actions = {
     async init({commit}) {
