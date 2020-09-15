@@ -1,11 +1,5 @@
 /* globals API_URL */
 
-export const userService = {
-  login,
-  signup,
-  autoLogin,
-  logout
-}
 
  const login = async ({ userId, password }) => {
   const requestOptions = {
@@ -14,7 +8,7 @@ export const userService = {
     body: JSON.stringify({ userId, password })
   }
   try {
-    const results = await fetch(`${API_URL}/login`, requestOptions)
+    const results = await fetch(`http://localhost:8000/login`, requestOptions)
     const user = await handleResponse(results)
     if (user.redirectTo) {
       return user
@@ -46,6 +40,7 @@ const autoLogin = async ({ userId, token }) => {
 }
 
  const signup = async ({ firstName, lastName, email, password }) =>  {
+
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -53,7 +48,7 @@ const autoLogin = async ({ userId, token }) => {
     })
   }
   try {
-    const results = await fetch(`${API_URL}/signup`, requestOptions)
+    const results = await fetch(`http://localhost:8000/signup`, requestOptions)
     const user = await handleResponse(results)
     localStorage.setItem('user', JSON.stringify(user))
     return user
@@ -78,4 +73,10 @@ async function handleResponse (response) {
     throw (data && data.message) || response.statusText
   }
   return data
+}
+export const userService = {
+  login,
+  signup,
+  autoLogin,
+  logout
 }

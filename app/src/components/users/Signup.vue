@@ -56,22 +56,25 @@
                 </v-form>
                 <v-form v-if="existinguser">
                   <v-text-field
-                    label="firstname"
-                    name="firstname"
+                    label="First name"
+                    name="firstName"
                     prepend-icon="mdi-account"
                     type="text"
+                    v-model="userData.firstName"
                   ></v-text-field>
                   <v-text-field
-                    label="lastname"
-                    name="lastname"
+                    label="Surname"
+                    name="lastName"
                     prepend-icon="mdi-account"
                     type="text"
+                    v-model="userData.lastName"
                   ></v-text-field>
                   <v-text-field
-                    label="login"
-                    name="login"
+                    label="email"
+                    name="email"
                     prepend-icon="mdi-account"
                     type="text"
+                    v-model="userData.email"
                   ></v-text-field>
 
                   <v-text-field
@@ -80,14 +83,13 @@
                     name="password"
                     prepend-icon="mdi-lock"
                     type="password"
+                    v-model="userData.password"
                   ></v-text-field>
-     
-                    
                 </v-form>   
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="primary" @submit="checkForm">Signup</v-btn>
+                <v-btn color="primary" @click="checkForm">Signup</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -100,18 +102,26 @@
 <script>
   export default {
     data: () => ({
-       existing: true
+       existing: true,
+       userData: {
+         firstName: '',
+         lastName: '',
+         password: '',
+         email: '',
+       }
     }),
     methods: {
       existingBool () {
-        console.log('this is exisitn     ',this.existing)
         this.existing = !this.existing
       },
     existinguser () {
       return this.existing
     },
-    checkForm () {
-      
+    async checkForm () {
+      // firstName, lastName, email, password
+      console.log('this is iuserdata    ',this.userData)
+      await this.$store.dispatch('users/signup', this.userData)
+
     },
   }
 }
