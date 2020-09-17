@@ -1,11 +1,19 @@
 /* globals API_URL */
 
 
- const login = async ({ userId, password }) => {
+const login = async ({
+  userId,
+  password
+}) => {
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userId, password })
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId,
+      password
+    })
   }
   try {
     const results = await fetch(`http://localhost:8000/login`, requestOptions)
@@ -20,11 +28,19 @@
   }
 }
 
-const autoLogin = async ({ userId, token }) => {
+const autoLogin = async ({
+  userId,
+  token
+}) => {
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ userId, token })
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId,
+      token
+    })
   }
   try {
     const results = await fetch(`${API_URL}/auto`, requestOptions)
@@ -39,12 +55,25 @@ const autoLogin = async ({ userId, token }) => {
   }
 }
 
- const signup = async ({ firstName, lastName, email, password }) =>  {
+const signup = async ({
+  firstName,
+  lastName,
+  email,
+  password,
+  username
+}) => {
 
   const requestOptions = {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ firstName, lastName, email, password,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      firstName,
+      lastName,
+      email,
+      password,
+      username
     })
   }
   try {
@@ -57,12 +86,12 @@ const autoLogin = async ({ userId, token }) => {
   }
 }
 
-function logout () {
+function logout() {
   // remove user from local storage to log user out
   localStorage.removeItem('user')
 }
 
-async function handleResponse (response) {
+async function handleResponse(response) {
   const text = await response.text()
   const data = text && JSON.parse(text)
   if (!response.ok) {

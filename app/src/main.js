@@ -6,11 +6,10 @@ import vuetify from './plugins/vuetify';
 import apolloProvider from './api'
 
 Vue.config.productionTip = false
-
-new Vue({
-  router,
-  store,
-  vuetify,
-  apolloProvider,
-  render: h => h(App)
-}).$mount('#app')
+  new Vue({
+    router,
+    store,
+    vuetify,
+    apolloProvider,
+    render: h => h(App)
+  }).$mount('#app')

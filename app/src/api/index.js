@@ -7,7 +7,7 @@ import VueApollo from 'vue-apollo'
 Vue.use(VueApollo)
 
 export const apolloProvider = new VueApollo({
-  defaultClient: apolloClient,
+  defaultClient: ApolloClient,
 })
 
 // HTTP connection to the API

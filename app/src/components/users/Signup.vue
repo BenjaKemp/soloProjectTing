@@ -56,6 +56,13 @@
                 </v-form>
                 <v-form v-if="existinguser">
                   <v-text-field
+                    label="username"
+                    name="username"
+                    prepend-icon="mdi-account"
+                    type="text"
+                    v-model="userData.username"
+                  ></v-text-field>
+                  <v-text-field
                     label="First name"
                     name="firstName"
                     prepend-icon="mdi-account"
@@ -106,6 +113,7 @@
        userData: {
          firstName: '',
          lastName: '',
+         username: '',
          password: '',
          email: '',
        }

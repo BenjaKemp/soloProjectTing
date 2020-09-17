@@ -1,8 +1,8 @@
 <template>
-    <v-app v-if="authenticated">
+    <!-- <v-app v-if="!authenticated">
       <signup />
-    </v-app>
-    <v-app v-else>
+    </v-app> -->
+    <v-app>
       <main-header/>
       <navigation-drawer/>
       <v-main>
@@ -15,11 +15,11 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import SoundCloud from './components/soundcloud/Soundcloud';
-import Settings from './components/settings/Settings';
-import NavigationDrawer from './components/navigation/NavigationDrawer';
-import MainHeader from './components/partials/headers/MainHeader';
-import Signup from './components/users/Signup';
+import SoundCloud from './components/soundcloud/Soundcloud.vue';
+import Settings from './components/settings/Settings.vue';
+import NavigationDrawer from './components/navigation/NavigationDrawer.vue';
+import MainHeader from './components/partials/headers/MainHeader.vue';
+import Signup from './components/users/Signup.vue';
   export default {
     name: 'Home',
     components: {

@@ -138,25 +138,18 @@ const actions = {
       throw error
     }
   },
-  async signup({ dispatch, commit }, { firstName, lastName, email, password }) {
+  async signup({ dispatch, commit }, { firstName, lastName, email, password, username }) {
+    console.log('username     ',username)
     try {
       const user = await userService.signup({
         firstName,
         lastName,
         email,
         password,
+        username
       })
-      /* istanbul ignore next */
-      if (process.env.NODE_ENV === 'production') {
-        window.dataLayer.push({
-          event: 'gtm.accountsCreated'
-        })
-      }
-      await dispatch('sites/getSites', {
-        customerId: user.customerId
-      }, {
-        root: true
-      })
+
+      console.log('this is user      ',user)
       commit('loginSuccess', user)
       return {
         status: 'success',

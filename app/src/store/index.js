@@ -1,24 +1,14 @@
-/**
- * @module app/store
- */
+import Vue from 'vue'
+import Vuex from 'vuex'
+import modules from './modules'
 
-/*
- * The file enables `@/store/index.js` to import all vuex modules
- * in a one-shot manner. There should not be any reason to edit this file.
- */
+Vue.config.devtools = process.env.NODE_ENV !== 'production'
 
-const files = require.context('.', true, /\.js$/)
-
-const modules = {}
-
-files.keys().forEach(key => {
-  if (
-    key === './index.js' ||
-    key === './store-config.js' ||
-    key.includes('.spec.js')
-  ) {
-    return
-  }
-  modules[key.replace(/(\.\/|\.js)/g, '')] = files(key).default
+Vue.use(Vuex)
+// Init the store
+const store = new Vuex.Store({
+    modules,
+    strict: process.env.NODE_ENV !== 'production'
 })
-export default modules
+
+export default store
