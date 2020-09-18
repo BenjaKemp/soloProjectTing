@@ -12,8 +12,9 @@ module.exports = {
         contentBase: './dist',
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
+        publicPath: '/'
     },
     resolve: {
         alias: {
@@ -21,23 +22,16 @@ module.exports = {
         }
     },
     module: {
-        rules: [{
+        rules: [
+        {
+            test: /\.vue$/,
+            loader: 'vue-loader'
+        }, 
+        {
         test: /\.css$/,
         use: [
           'vue-style-loader',
           'css-loader',
-        ]
-      },
-    {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-    },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-            'vue-style-loader',
-            'css-loader',
-            'sass-loader' 
         ]
         },
         {
@@ -47,7 +41,7 @@ module.exports = {
             ],
         },
         {
-            test: /\.graphql?$/,
+            test: /\.(graphql|gql)$/,
             loader: 'webpack-graphql-loader'
         },
         {
@@ -62,20 +56,76 @@ module.exports = {
                 'csv-loader',
             ],
         },
-    
+        {
+            test: /\.html$/i,
+            loader: 'html-loader',
+        },
+        {
+            test: /\.m?js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
+            }
+        },
+           {
+               test: /\.s(c|a)ss$/,
+               use: [
+                   'vue-style-loader',
+                   'css-loader',
+                   {
+                       loader: 'sass-loader',
+                       // Requires sass-loader@^7.0.0
+                       options: {
+                           implementation: require('sass'),
+                           fiber: require('fibers'),
+                           indentedSyntax: true // optional
+                       },
+                       // Requires sass-loader@^8.0.0
+                       options: {
+                           implementation: require('sass'),
+                           sassOptions: {
+                               fiber: require('fibers'),
+                               indentedSyntax: true // optional
+                           },
+                       },
+                   },
+               ],
+           },
         {
             test: /\.xml$/,
             use: [
                 'xml-loader',
             ],
         }],
+        
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
         new HtmlWebpackPlugin({
-            title: 'Output Management',
+            templateContent: `
+                <html>
+                <body>
+                    <div id="app"></div>
+                </body>
+                </html>
+            `
         }),
         new VueLoaderPlugin(),
         new VuetifyLoaderPlugin()
     ],
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all',
+                },
+            },
+        },
+    },
 };

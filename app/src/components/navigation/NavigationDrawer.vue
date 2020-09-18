@@ -2,13 +2,13 @@
       <v-navigation-drawer
       app
       clipped
-        v-model="drawer"
-        :color="color"
-        :right="right"
-        :permanent="permanent"
-        :src="bg"
-        absolute
-        dark
+      v-model="drawer"
+      :color="color"
+      :right="right"
+      :permanent="permanent"
+      :src="bg"
+      absolute
+      dark
       >
         <v-list
           dense
@@ -29,7 +29,6 @@
             </v-list-item-content>
           </v-list-item>
         </v-list>
-        </router-link>
       </v-navigation-drawer>
 </template>
 
