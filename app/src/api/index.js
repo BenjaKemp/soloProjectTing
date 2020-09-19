@@ -10,6 +10,7 @@ export const apolloProvider = new VueApollo({
   defaultClient: ApolloClient,
 })
 
+
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
