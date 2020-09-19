@@ -1,2 +1,0 @@
-# soloProjectTing
-My Best Work
