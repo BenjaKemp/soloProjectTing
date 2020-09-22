@@ -1,16 +1,8 @@
 <template>
-    <v-app-bar
-      class="navbar-container"
-      app
-      clipped-left
-      dense
-    >
-    </v-app-bar>
+  <v-app-bar class="navbar-container" app clipped-left dense></v-app-bar>
 </template>
 <script>
-  export default {
-  }
+export default {};
 </script>
 <style>
-
 </style>
