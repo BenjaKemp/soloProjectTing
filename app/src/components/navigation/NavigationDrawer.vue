@@ -36,6 +36,7 @@ export default {
         { title: "Soundcloud", icon: "mdi-help-box", route: "soundcloud" },
         { title: "Newsletter", icon: "mdi-help-box", route: "newsletter" },
         { title: "Players", icon: "mdi-help-box", route: "players" },
+        { title: "Chat", icon: "mdi-help-box", route: "chat" },
       ],
       color: "primary",
       colors: ["primary", "blue", "success", "red", "teal"],

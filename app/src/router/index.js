@@ -67,6 +67,14 @@ const routes = [{
       requiresAuth: true
     },
     component: () => import( /* webpackChunkName: "about" */ '../components/players/Player.vue')
+  },
+  {
+    path: '/chat',
+    name: 'chat',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import( /* webpackChunkName: "about" */ '../components/chat/Chat.vue')
   }
 ]
 
