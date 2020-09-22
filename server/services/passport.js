@@ -38,6 +38,8 @@ const jwtOptions = {
 };
 // create jwt Strategy
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
+
+    console.log('this is payload     ', payload)
     // see if the user ID in the payload exists in our database
     // if it does, call done with that other
     // otherwise, call done without a user object
@@ -53,7 +55,21 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, done) => {
     });
 });
 
+const requireAuth = passport.authenticate('jwt', {
+    session: false
+});
+const requireSignin = passport.authenticate('local', {
+    session: false
+});
+
+
 passport.use(jwtLogin);
-passport.use(localLogin);
+
+module.exports = {
+    requireAuth,
+    requireSignin,
+    localLogin
+}
+// passport.use(localLogin);
 
 // tell passport to user this strategy
