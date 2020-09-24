@@ -20,6 +20,18 @@ const messageSchema = new mongoose.Schema({
   date: {
     type: String,
     required: false
+  },
+  comments: [{
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user',
+    },
+    body: String,
+    date: Date
+  }],
+  meta: {
+    votes: Number,
+    favs: Number
   }
 });
 

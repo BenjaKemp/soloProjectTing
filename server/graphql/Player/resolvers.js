@@ -5,7 +5,6 @@ module.exports = {
         Player
       }
     }) => {
-      console.log('this is context  ', Player)
       const players = await Player.find({});
       return players
     },

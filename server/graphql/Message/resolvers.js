@@ -1,9 +1,19 @@
 module.exports = {
   Query: {
-    messages: (parents, args, {
-      models
+    getPosts: async (parents, args, {
+      models: {
+        Message
+      }
     }) => {
-      return Object.values(models.messages);
+      const messageArray = await Message.find({}, function (err, Message) {
+        if (err) {
+          console.log(err);
+        } else {
+          return Message;
+        }
+      });
+      console.log('these are messageArray    ', messageArray)
+      return messageArray
     },
     message: (parent, {
       id
@@ -15,23 +25,20 @@ module.exports = {
   },
   Mutation: {
     createMessage: (parent, {
-      input: {
-        text,
-        tags,
-        userId,
-        title
-      }
+      input
     }, {
       models: {
         Message
       }
     }) => {
+      const {
+        comments
+      } = input
+      const date = new Date()
       const createdMessage = new Message({
-        text,
-        date: new Date(),
-        tags,
-        author: userId,
-        title
+        ...input,
+        comments,
+        date
       });
       createdMessage.save()
       return {
@@ -68,10 +75,10 @@ module.exports = {
     },
   },
   Message: {
-    user: (message, args, {
-      models
-    }) => {
-      return models.users[message.userId];
-    },
+    // user: (message, args, {
+    //   models
+    // }) => {
+    //   return models.users[message.userId];
+    // },
   }
 }

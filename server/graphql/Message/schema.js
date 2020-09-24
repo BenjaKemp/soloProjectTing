@@ -4,32 +4,48 @@ const {
 
 module.exports = gql `
   extend type Query {
-    messages: [Message!] !
+    getPosts: [Message] 
     message(id: ID!): Message!
   }
   extend type Mutation {
     createMessage(input: CreateMessageInput!): CreateMessagePayload!
-      updateMessage(input: UpdateMessageInput): Message!
+    updateMessage(input: UpdateMessageInput): Message!
     deleteMessage(id: ID!): DeleteMessagePayload!
   }
   type Message {
-    id: ID!
-    text: String!
-    user: User!
+    text: String!,
+    tags: [String],
+    author: ID!,
+    title: String,
+    comments: [MessageComments],
+    meta: MessageMetaObject
+  }
+  type MessageComments {
+    author: ID!
+    body: String!
+  }
+  type MessageMetaObject {
+    votes: Int,
+    favs: Int
   }
   input CreateMessageInput {
     text: String!,
     tags: [String],
     author: ID!,
-    title: String
+    title: String,
+    votes: Int,
+    favs: Int
   }
   type CreateMessagePayload {
     messageId: ID
   }
   input UpdateMessageInput {
-    id: ID!
-    username: String
-    whatever: String
+    author: ID!,
+    text: String,
+    tags: [String],
+    title: String,
+    votes: Int,
+    favs: Int
   }
   type DeleteMessagePayload {
     id: ID!
