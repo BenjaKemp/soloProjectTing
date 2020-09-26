@@ -18,11 +18,11 @@ module.exports = gql `
     author: ID!,
     title: String,
     comments: [MessageComments],
-    meta: MessageMetaObject
   }
   type MessageComments {
     author: ID!
     body: String!
+    meta: MessageMetaObject
   }
   type MessageMetaObject {
     votes: Int,
