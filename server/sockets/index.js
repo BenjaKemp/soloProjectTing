@@ -33,7 +33,7 @@ const chatServer = {
         const rooms = Object.keys(socket.rooms)
         return rooms.filter(r => r !== socket.id)
     },
-    handleMessageBroadcast(socket) {
+    handlePostBroadcast(socket) {
         socket.on('new chat message', (message) => {
             roomChatHistory[message.room] ?
                 roomChatHistory[message.room].push({
@@ -46,7 +46,7 @@ const chatServer = {
             console.log(roomChatHistory[message.room])
             console.log('this is message    ', message)
 
-            chat.in(message.room).emit('updateMessage', {
+            chat.in(message.room).emit('updatePost', {
                 user: nickNames[socket.id],
                 text: message.text,
                 room: message.room,
@@ -92,7 +92,7 @@ const chatServer = {
             // joining the lobby room
             this.joinRoom(socket, 'lobby')
             // handling a new message being sent
-            this.handleMessageBroadcast(socket, nickNames)
+            this.handlePostBroadcast(socket, nickNames)
             // handles moving from one room to another
             this.handleRoomJoining(socket)
             socket.on('rooms', () => {
