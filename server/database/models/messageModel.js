@@ -27,12 +27,16 @@ const messageSchema = new mongoose.Schema({
       ref: 'user',
     },
     body: String,
-    date: Date
+    date: Date,
+    likes: {
+      type: Map,
+      of: String
+    },
   }],
-  meta: {
-    votes: Number,
-    favs: Number
+  favs: {
+    type: Map,
+    of: mongoose.Schema.Types.ObjectId
   }
 });
 
-module.exports = mongoose.model('Message', messageSchema);
+module.exports = mongoose.model('Post', messageSchema);

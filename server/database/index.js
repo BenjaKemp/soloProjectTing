@@ -1,5 +1,5 @@
 // const models = require('./models')
-const Message = require('./models/messageModel.js')
+const Post = require('./models/messageModel.js')
 const User = require('./models/userModel.js')
 const Player = require('./models/playerModel.js')
 
@@ -14,7 +14,7 @@ mongoose.connect(url, {
 });
 mongoose.connection.once('open', () => console.log(`Connected to mongo at ${url}`));
 const models = {
-    Message,
+    Post,
     User,
     Player,
 }

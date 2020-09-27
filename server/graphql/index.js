@@ -9,7 +9,7 @@ const {
 const {
   messageSchema,
   messageResolver
-} = require('./Message');
+} = require('./Blog');
 const {
   playerSchema,
   playerResolver
