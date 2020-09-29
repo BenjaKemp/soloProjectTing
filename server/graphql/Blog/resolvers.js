@@ -108,8 +108,9 @@ module.exports = {
         author: authorId,
         body: comment,
         date: new Date(),
-        likes: []
+        likes: new Map()
       }
+      console.log('post      ', postToUpdate)
       postToUpdate.comments.push(newComment)
       await postToUpdate.save()
       return {
@@ -128,23 +129,16 @@ module.exports = {
       }
     }) => {
 
-      // fuck me this took all day
-
-      // check whether the authorId exists in the likes map of the comments. if it doesn't then add it and if it doesn't then don't
       const postToUpdate = await Post.findById(postId).exec();
-      console.log('postToUpdate    ,', postToUpdate)
       const commentIndex = await postToUpdate.comments.findIndex(el => el._id == commentId)
-      console.log('commentToLike befoire   ,', commentIndex)
-
-      await postToUpdate.comments[commentIndex].likes.set('whatever')
-
+      if (postToUpdate.comments[commentIndex].likes.get(authorId)) {
+        await postToUpdate.comments[commentIndex].likes.remove(authorId)
+      } else {
+        console.log('we should be trying to post    ', authorId)
+        await postToUpdate.comments[commentIndex].likes.set(authorId)
+      }
       postToUpdate.save()
-      // console.log('this is the like ,', commentToLike.likes)
       console.log('commentToLike after   ,', postToUpdate)
-
-
-      // console.log('this is the like with get ,', commentToLike.likes.get(authorId))
-
       return {
         messageId: postToUpdate._id
       }

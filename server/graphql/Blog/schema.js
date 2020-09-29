@@ -22,10 +22,17 @@ module.exports = gql `
     text: String!,
     title: String!,
     tags: [String],
+    date: String!
   }
   type PostComment {
     author: ID!
     body: String!
+    date: String!
+    likes: [likeObject]
+  }
+  type likeObject {
+    key: String
+    value: String
   }
 
 "These are the Inputs"
