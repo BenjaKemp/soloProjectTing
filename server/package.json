@@ -10,6 +10,7 @@
     "bcrypt": "^5.0.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "graphql": "^15.3.0",
     "graphql-import": "^1.0.2",
@@ -35,6 +36,10 @@
     "webpack-dev-middleware": "^3.7.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-env": "^7.11.5",
+    "@shelf/jest-mongodb": "^1.2.3",
+    "babel-jest": "^26.3.0",
     "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-standard": "^14.1.1",
@@ -44,13 +49,14 @@
     "eslint-plugin-standard": "^4.0.1",
     "expect": "^26.4.2",
     "husky": "^4.2.5",
+    "jest": "^26.4.2",
     "lint-staged": "^10.2.11",
     "mocha": "^8.1.1",
     "nodemon": "^2.0.4",
     "supertest": "^4.0.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "nodemon app.js",
     "pretest": "eslint --ignore-path .gitignore .",
     "vue": "vue ui"
@@ -81,5 +87,11 @@
   "bugs": {
     "url": "https://github.com/BenjaKemp/soloProjectTing/issues"
   },
-  "homepage": "https://github.com/BenjaKemp/soloProjectTing#readme"
+  "homepage": "https://github.com/BenjaKemp/soloProjectTing#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  }
 }
