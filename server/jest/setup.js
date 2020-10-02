@@ -1,7 +1,6 @@
 // setup.js
 const path = require('path');
-var url = process.env.MONGOLAB_URI;
-var dotenv = require('dotenv');
+
 const fs = require('fs');
 
 const {
