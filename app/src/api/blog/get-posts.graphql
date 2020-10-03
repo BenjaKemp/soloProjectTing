@@ -1,0 +1,18 @@
+query { 
+  getPosts {
+    text
+    tags
+    author
+    title
+    comments {
+      author
+    	body
+      date
+      likes {
+        key
+        value
+      }
+    }
+  }
+}
+

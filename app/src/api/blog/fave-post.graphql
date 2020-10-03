@@ -1,0 +1,5 @@
+mutation favePost($input: FavePostInput!) {
+    favePost(input: $input) {
+        messageId
+    }
+}

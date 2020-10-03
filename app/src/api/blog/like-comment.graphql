@@ -1,0 +1,5 @@
+mutation likeComment($input: likeCommentInput!) {
+    likeComment(input: $input) {
+        messageId
+    }
+}
