@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import DraggableDiv from "../partials/DraggableDiv";
+import DraggableDiv from "../partials/DraggableDiv.vue";
 import moment from "moment";
 export default {
   name: "Chat",
