@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { VuetifyLoaderPlugin } = require('vuetify-loader')
+const autoprefixer = require('autoprefixer');
 
 module.exports = env => {
 
@@ -122,6 +123,7 @@ module.exports = env => {
             }),
             new HtmlWebpackPlugin({
                 templateContent: `
+                    <!doctype html>
                     <html>
                     <body>
                         <div id="app"></div>
