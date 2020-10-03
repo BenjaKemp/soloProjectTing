@@ -11,6 +11,9 @@ module.exports = env => {
     // console.log('NODE_ENV: ', env.NODE_ENV); // 'local'
     // console.log('Production: ', env.production); // true
 
+    console.log('this is env      ',env)
+    console.log('this is process.env.NODE_ENV       ',process.env.NODE_ENV )
+
     return {
         entry: './src/main.js',
         devtool: 'inline-source-map',
@@ -20,7 +23,7 @@ module.exports = env => {
         output: {
             filename: '[name].[contenthash].js',
             path: path.resolve(__dirname, 'dist'),
-            publicPath: '/'
+            publicPath: "http://localhost:8000/",
         },
         resolve: {
             alias: {
@@ -39,11 +42,6 @@ module.exports = env => {
                            loader: `postcss-loader`,
                            options: {
                                options: {},
-                               plugins: () => {
-                                   autoprefixer({
-                                       browsers: ['last 2 versions']
-                                   });
-                               }
                            }
                        }, ]
                 },
