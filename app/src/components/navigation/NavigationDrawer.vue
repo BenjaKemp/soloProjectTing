@@ -11,7 +11,7 @@
     dark
   >
     <v-list dense nav class="py-0">
-      <v-list-item v-for="item in items" :key="item.title" link :to="item.route">
+      <v-list-item v-for="item in items" :key="item.title" link :to="item.route" class="list-item-white-dashed">
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -56,3 +56,11 @@ export default {
   },
 };
 </script>
+<style>
+.list-item-white-dashed {
+    color: white;
+    height: 20px;
+    padding: 20px;
+    border: dashed;
+}
+</style>

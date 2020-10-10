@@ -1,5 +1,5 @@
 const passport = require("passport");
-const User = require("../database/models/userModel");
+const User = require("../database/models/user.model");
 const config = require("../config");
 const JwtStrategy = require("passport-jwt").Strategy;
 const ExtractJwt = require("passport-jwt").ExtractJwt;
@@ -8,7 +8,6 @@ const LocalStrategy = require("passport-local");
 // create local strategy
 // const localOptions = {usernameField: 'username'};
 const localLogin = new LocalStrategy((username, password, done) => {
-    console.log('this is here')
     User.findOne({
         username: username
     }, (err, user) => {

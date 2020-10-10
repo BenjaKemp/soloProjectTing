@@ -1,20 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {
-    VueLoaderPlugin
-} = require('vue-loader')
-const {
-    CleanWebpackPlugin
-} = require('clean-webpack-plugin');
-const {
-    VuetifyLoaderPlugin
-} = require('vuetify-loader')
+const { VueLoaderPlugin } = require('vue-loader')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { VuetifyLoaderPlugin } = require('vuetify-loader')
+const autoprefixer = require('autoprefixer');
 
 module.exports = env => {
 
     // Use env.<YOUR VARIABLE> here:
     // console.log('NODE_ENV: ', env.NODE_ENV); // 'local'
     // console.log('Production: ', env.production); // true
+
+    console.log('this is env      ',env)
+    console.log('this is process.env.NODE_ENV       ',process.env.NODE_ENV )
 
     return {
         entry: './src/main.js',
@@ -25,7 +23,7 @@ module.exports = env => {
         output: {
             filename: '[name].[contenthash].js',
             path: path.resolve(__dirname, 'dist'),
-            publicPath: '/'
+            publicPath: "http://localhost:8000/",
         },
         resolve: {
             alias: {
@@ -38,11 +36,38 @@ module.exports = env => {
                     loader: 'vue-loader'
                 },
                 {
-                    test: /\.css$/,
+                    test: /.css$/,
+                    use: ['style-loader', 'css-loader', 'postcss-loader',
+                       {
+                           loader: `postcss-loader`,
+                           options: {
+                               options: {},
+                           }
+                       }, ]
+                },
+                {
+                    test: /\.s(c|a)ss$/,
                     use: [
                         'vue-style-loader',
                         'css-loader',
-                    ]
+                        {
+                            loader: 'sass-loader',
+                            // Requires sass-loader@^7.0.0
+                            options: {
+                                implementation: require('sass'),
+                                fiber: require('fibers'),
+                                indentedSyntax: true // optional
+                            },
+                            // Requires sass-loader@^8.0.0
+                            options: {
+                                implementation: require('sass'),
+                                sassOptions: {
+                                    fiber: require('fibers'),
+                                    indentedSyntax: true // optional
+                                },
+                            },
+                        },
+                    ],
                 },
                 {
                     test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -80,30 +105,7 @@ module.exports = env => {
                         }
                     }
                 },
-                {
-                    test: /\.s(c|a)ss$/,
-                    use: [
-                        'vue-style-loader',
-                        'css-loader',
-                        {
-                            loader: 'sass-loader',
-                            // Requires sass-loader@^7.0.0
-                            options: {
-                                implementation: require('sass'),
-                                fiber: require('fibers'),
-                                indentedSyntax: true // optional
-                            },
-                            // Requires sass-loader@^8.0.0
-                            options: {
-                                implementation: require('sass'),
-                                sassOptions: {
-                                    fiber: require('fibers'),
-                                    indentedSyntax: true // optional
-                                },
-                            },
-                        },
-                    ],
-                },
+
                 {
                     test: /\.xml$/,
                     use: [
@@ -119,6 +121,7 @@ module.exports = env => {
             }),
             new HtmlWebpackPlugin({
                 templateContent: `
+                    <!doctype html>
                     <html>
                     <body>
                         <div id="app"></div>

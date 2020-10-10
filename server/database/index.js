@@ -1,7 +1,7 @@
 // const models = require('./models')
-const Post = require('./models/messageModel.js')
-const User = require('./models/userModel.js')
-const Player = require('./models/playerModel.js')
+const Post = require('./models/message.model.js')
+const User = require('./models/user.model.js')
+const Player = require('./models/player.model.js')
 
 
 const mongoose = require('mongoose');
