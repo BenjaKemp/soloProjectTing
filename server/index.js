@@ -1,16 +1,10 @@
 const express = require('express');
-const {
-  ApolloServer
-} = require('apollo-server-express');
+
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const {
-  schema,
-  resolvers
-} = require('./graphql');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
+
+
 const chatServer = require('./sockets')
 
 
@@ -40,32 +34,6 @@ app.use(bodyParser.json({
 
 router(app);
 
-const {
-  models,
-  mongoose
-} = require('./database')
 
-const server = new ApolloServer({
-  typeDefs: schema,
-  resolvers,
-  context: {
-    models,
-    me: {
-      id: '1',
-      firstname: 'Ben',
-      lastname: 'Kemp',
-      messageIds: [1]
-    },
-    mongoose
 
-  },
-});
-
-server.applyMiddleware({
-  app,
-  path: '/graphql'
-});
-
-http.listen(8000, () => {
-  console.log('Apollo Server on http://localhost:8000/graphql');
-});
+module.exports = app;

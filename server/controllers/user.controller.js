@@ -81,7 +81,10 @@ class UserClass {
                 }
                 console.log('you have added user ', user)
                 res.json({
-                    token: tokenForUser(user)
+                    _id: user._id,
+                    token: tokenForUser(user),
+                    username: user.username
+
                 });
             });
         });

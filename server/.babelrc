@@ -1,13 +1,6 @@
 {
     "presets": [
-        [
-            "@babel/env",
-            "@babel/preset-env",
-            {
-                "targets": {
-                    "node": "current"
-                }
-            }
-        ]
-    ]
+        "@babel/preset-env"
+    ],
+    "plugins": ["transform-class-properties", "@babel/transform-runtime"]
 }
