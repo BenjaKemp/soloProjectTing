@@ -11,16 +11,30 @@ const tokenForUser = user => {
 };
 
 class UserClass {
-  constructor(){
+  constructor(name){
 
   }
-  get(_id){
-    User.findOne({ _id }, (err, existingUser) => {
+  async get(_id){
+   const res = await User.findOne( {_id} , (err, existingUser) => {
       if (err) {
         return next(err);
       }
       if (existingUser) {
+        this.cunt = existingUser,
+        this.email = existingUser.email,
+        this.firstName = existingUser.firstName,
+        this.lastName = existingUser.lastName
         return existingUser
+      }
+    });
+    return res
+  }
+  getAndUpdate(_id, username){
+    User.findByIdAndUpdate(_id, { username }, function (err, updatedUser) {
+      if (err) {
+          return next(err);
+      } else {
+        return updatedUser
       }
     });
   }
@@ -81,4 +95,4 @@ class UserClass {
     };
 }
 User.schema.loadClass(UserClass)
-module.exports = User
+module.exports = UserClass

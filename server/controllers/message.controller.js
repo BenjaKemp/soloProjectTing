@@ -1,4 +1,4 @@
-const Message = require('../database/models/messageModel.js')
+const Message = require('../database/models/message.model.js')
 class MessageClass {
     constructor(_id){
         this._id = _id

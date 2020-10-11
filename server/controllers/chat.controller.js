@@ -1,5 +1,3 @@
-
-
 class ChatClass {
     constructor(socket){
         this.socket = socket
