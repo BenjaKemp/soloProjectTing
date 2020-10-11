@@ -26,11 +26,10 @@ module.exports = {
       createdUser.save();
       return createdUser;
     },
-    updateUser: async (_, { input: { id } }, { controllers: {UserClass} }) => {
+    updateUser: async (_, { input: { id } }, { controllers: { UserClass } }) => {
       const UserToUpdate = new UserClass()
       const {firstName} = await UserToUpdate.get(id)
       return {username: firstName }
-
     },
     deleteUser: async (_, { id }, { models: { User } }) => {
       const deletedUser = await User.findOneAndDelete({ _id: id }).exec();
