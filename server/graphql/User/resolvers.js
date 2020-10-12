@@ -38,5 +38,10 @@ module.exports = {
         confirmation: `${deletedUser.username} was removed`
       };
     },
+    newSearch: async (_,{ input }, {controllers: { SearchClass } }) => {
+      const res = await SearchClass.metaSearch(input)
+      console.log('this is the search result      ',res)
+      return res
+    }
   },
 };

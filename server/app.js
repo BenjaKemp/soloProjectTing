@@ -8,6 +8,7 @@ const { schema, resolvers } = require('./graphql');
 const { models, mongoose } = require('./database')
 const router = require('./router');
 const controllers = require('./controllers')
+require('dotenv').config();
 // const config = require('../app/webpack.config.js');
 // const index = require('../app/dist/index.html');
 // const compiler = webpack(config);
