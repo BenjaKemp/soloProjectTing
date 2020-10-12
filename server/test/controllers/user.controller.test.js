@@ -1,9 +1,8 @@
 const request = require("supertest");
-const app = require("../../index.js");
+const app = require("../../app.js");
 import mongoose from 'mongoose';
-import {
-    MongoMemoryServer
-} from 'mongodb-memory-server';
+import { MongoMemoryServer } from 'mongodb-memory-server';
+// const { UserClass } = require('../../controllers') 
 
 let mongoServer;
 const userData = {
@@ -14,10 +13,16 @@ const userData = {
     username: "Wonzilla"
 };
 
+// console.log('UserClass     ', UserClass)
+
 beforeAll(async () => {
     mongoServer = new MongoMemoryServer();
     const mongoUri = await mongoServer.getUri();
-    await mongoose.connect(mongoUri);
+    console.log('mongoUri    ', mongoUri)
+    await mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+    });
 });
 
 afterAll(async () => {
@@ -47,5 +52,11 @@ afterAll(async () => {
             expect(response.statusCode).toBe(422);
             expect(response.clientError).toBe(true);
             expect(error.error).toBe("you must provide both a username and password ");
+    });
+
+    it('should find a user and update', async () => {
+
+        // const UsertoUpdate = new UserClass()
+
     });
 

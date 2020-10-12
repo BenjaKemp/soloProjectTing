@@ -25,7 +25,6 @@ module.exports = gql `
   input UpdateUserInput {
     id: ID!
     username: String
-    whatever: String
   }
   type DeleteUserPayload {
     id: ID!

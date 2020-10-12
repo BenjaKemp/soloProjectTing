@@ -29,14 +29,27 @@ class UserClass {
     });
     return res
   }
-  getAndUpdate(_id, username){
-    User.findByIdAndUpdate(_id, { username }, function (err, updatedUser) {
+  async getAndUpdate(_id, username){
+    const updatedUser = await User.findByIdAndUpdate(_id, { username }, function (err, updatedUser) {
       if (err) {
           return next(err);
       } else {
         return updatedUser
       }
     });
+    return updatedUser
+  }
+  async getAndDelete(_id ){
+    const deletedUser = await User.findOneAndDelete({
+          _id
+        }, function (err, deletedUser) {
+      if (err) {
+        return next(err);
+      } else {
+        return deletedUser
+      }
+    })
+    return deletedUser
   }
   static signin = async ({ body: { password, username } }, res, next) => {
       if (!username || !password) {
