@@ -16,7 +16,6 @@ module.exports = {
           return Post;
         }
       });
-      console.log('these are messageArray    ', messageArray)
       return messageArray
     },
     message: (parent, {
@@ -28,16 +27,8 @@ module.exports = {
     },
   },
   Mutation: {
-    createPost: (parent, {
-      input
-    }, {
-      models: {
-        Post
-      }
-    }) => {
-      const {
-        comments
-      } = input
+    createPost: (parent, { input }, { models: { Post } }) => {
+      const { comments } = input
       const date = new Date()
       const createdPost = new Post({
         ...input,
@@ -45,64 +36,23 @@ module.exports = {
         date
       });
       createdPost.save()
-      return {
-        messageId: createdPost._id
-      }
+      return { messageId: createdPost._id }
     },
-    updatePost: async (_, {
-      input: {
-        _id
-      }
-    }, {
-      models: {
-        Post
-      }
-    }) => {
-      const existingPost = await Post.findOne({
-        _id
-      }).exec();
+    updatePost: async (_, { input: { _id } }, { models: { Post } }) => {
+      const existingPost = await Post.findOne({ _id }).exec();
     },
-    deletePost: async (_, {
-      id
-    }, {
-      models: {
-        Post
-      }
-    }) => {
-      const deletedPost = await Post.findOneAndDelete({
-        _id: id
-      }).exec();
+    deletePost: async (_, { id }, { models: { Post } }) => {
+      const deletedPost = await Post.findOneAndDelete({ _id: id }).exec();
       return {
         id: deletedPost._id,
         confirmation: `${deletedPost.title} was removed`
       }
     },
-    favePost: async (_, {
-      input: {
-        postId,
-        authorId
-      }
-    }, {
-      models: {
-        Post
-      }
-    }) => {
+    favePost: async (_, { input: { postId, authorId } }, { models: { Post } }) => {
       console.log('postId    ,', postId)
       console.log('authorId    ,', authorId)
-
     },
-    addComment: async (_, {
-      input: {
-        postId,
-        comment,
-        authorId
-      }
-    }, {
-      models: {
-        Post
-      }
-    }) => {
-
+    addComment: async (_, { input: { postId, comment, authorId } }, { models: { Post } }) => {
       const postToUpdate = await Post.findById(postId).exec();
       const newComment = {
         author: authorId,
@@ -116,32 +66,17 @@ module.exports = {
         messageId: postToUpdate._id
       }
     },
-    likeComment: async (_, {
-      input: {
-        postId,
-        commentId,
-        authorId
-      }
-    }, {
-      models: {
-        Post
-      }
-    }) => {
-
+    likeComment: async (_, { input: { postId, commentId, authorId } }, { models: { Post } }) => {
       // fuck me this took all day
-
       // check whether the authorId exists in the likes map of the comments. if it doesn't then add it and if it doesn't then don't
       const postToUpdate = await Post.findById(postId).exec();
       console.log('postToUpdate    ,', postToUpdate)
       const commentIndex = await postToUpdate.comments.findIndex(el => el._id == commentId)
       console.log('commentToLike befoire   ,', commentIndex)
-
       await postToUpdate.comments[commentIndex].likes.set('whatever')
-
       postToUpdate.save()
       // console.log('this is the like ,', commentToLike.likes)
       console.log('commentToLike after   ,', postToUpdate)
-
 
       // console.log('this is the like with get ,', commentToLike.likes.get(authorId))
 

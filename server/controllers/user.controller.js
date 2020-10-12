@@ -11,28 +11,45 @@ const tokenForUser = user => {
 };
 
 class UserClass {
-    // `fullName` becomes a virtual
-  get fullName() {
-    return `${this.firstName} ${this.lastName}`;
+  constructor(name){
+
   }
-  set fullName(v) {
-    const firstSpace = v.indexOf(' ');
-    this.firstName = v.split(' ')[0];
-    this.lastName = firstSpace === -1 ? '' : v.substr(firstSpace + 1);
-  }
-    // `getFullName()` becomes a document method
-  getFullName() {
-    return `${this.firstName} ${this.lastName}`;
-  }
-    // `findByFullName()` becomes a static
-  findByFullName(name) {
-    const firstSpace = name.indexOf(' ');
-    const firstName = name.split(' ')[0];
-    const lastName = firstSpace === -1 ? '' : name.substr(firstSpace + 1);
-    return this.findOne({
-      firstName,
-      lastName
+  async get(_id){
+   const res = await User.findOne( {_id} , (err, existingUser) => {
+      if (err) {
+        return next(err);
+      }
+      if (existingUser) {
+        this.cunt = existingUser,
+        this.email = existingUser.email,
+        this.firstName = existingUser.firstName,
+        this.lastName = existingUser.lastName
+        return existingUser
+      }
     });
+    return res
+  }
+  async getAndUpdate(_id, username){
+    const updatedUser = await User.findByIdAndUpdate(_id, { username }, function (err, updatedUser) {
+      if (err) {
+          return next(err);
+      } else {
+        return updatedUser
+      }
+    });
+    return updatedUser
+  }
+  async getAndDelete(_id ){
+    const deletedUser = await User.findOneAndDelete({
+          _id
+        }, function (err, deletedUser) {
+      if (err) {
+        return next(err);
+      } else {
+        return deletedUser
+      }
+    })
+    return deletedUser
   }
   static signin = async ({ body: { password, username } }, res, next) => {
       if (!username || !password) {
@@ -91,4 +108,4 @@ class UserClass {
     };
 }
 User.schema.loadClass(UserClass)
-module.exports = User
+module.exports = UserClass
