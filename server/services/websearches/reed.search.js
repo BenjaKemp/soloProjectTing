@@ -1,6 +1,7 @@
 const fetch = require("node-fetch");
 const search = async (searchinput) => {
     let searchString = ''
+    console.log('searchinput     ', searchinput)
     for(key in searchinput){
         searchString += `${key}=${searchinput[key]}&`
     }

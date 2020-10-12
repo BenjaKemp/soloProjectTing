@@ -53,20 +53,20 @@ module.exports = gql `
   }
 
   type NewSearchObject {
-        jobId: ID,
-        employerId: ID,
-        employerName: String,
-        employerProfileId: ID,
-        employerProfileName: String,
-        jobTitle: String,
-        locationName: String,
-        minimumSalary: Int,
-        maximumSalary: Int,
-        currency: String,
-        expirationDate: String,
-        date: String,
-        jobDescription: String,
-        applications: Int,
+    jobId: ID,
+    employerId: ID,
+    employerName: String,
+    employerProfileId: ID,
+    employerProfileName: String,
+    jobTitle: String,
+    locationName: String,
+    minimumSalary: Int,
+    maximumSalary: Int,
+    currency: String,
+    expirationDate: String,
+    date: String,
+    jobDescription: String,
+    applications: Int
   }
 
   type DeleteUserPayload {

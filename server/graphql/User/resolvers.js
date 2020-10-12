@@ -40,8 +40,7 @@ module.exports = {
     },
     newSearch: async (_,{ input }, {controllers: { SearchClass } }) => {
       const res = await SearchClass.metaSearch(input)
-      console.log('this is the search result      ',res)
-      return res
+      return { res: res.results }
     }
   },
 };

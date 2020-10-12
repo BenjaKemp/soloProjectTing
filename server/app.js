@@ -22,15 +22,6 @@ app.use(bodyParser.json({
   type: '*/*'
 }));
 
-// const Ben = new UserClass()
-
-// const newMan = Ben.get("5f6249cf03565c154ca95186").then(el=> console.log('this is el  el', el))
-
-// console.log('these are Ben    ',Ben)
-// console.log('these are newMan    ',newMan)
-// for(key in models.User){
-//   console.log('these are keys    ',key)
-// }
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
@@ -47,12 +38,12 @@ const server = new ApolloServer({
   },
 });
 
-router(app);
-
 server.applyMiddleware({
   app,
   path: '/graphql'
 });
+
+router(app);
 
 http.listen(8000, () => {
   console.log('Apollo Server on http://localhost:8000/graphql');
