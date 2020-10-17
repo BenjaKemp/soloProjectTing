@@ -41,8 +41,8 @@ export default {
       color: "primary",
       colors: ["primary", "blue", "success", "red", "teal"],
       right: false,
-      permanent: true,
-      miniVariant: false,
+      permanent: false,
+      miniVariant: true,
       expandOnHover: true,
       background: false,
     };
