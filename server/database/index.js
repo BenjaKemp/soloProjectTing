@@ -13,6 +13,7 @@ mongoose.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+mongoose.set('useCreateIndex', true);
 mongoose.connection.once('open', () => console.log(`Connected to mongo at ${url}`));
 const models = {
     Post,
