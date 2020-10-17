@@ -7758,6 +7758,11 @@ postcss-convert-values@^4.0.1:
     postcss "^7.0.0"
     postcss-value-parser "^3.0.0"
 
+postcss-deadcss@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-deadcss/-/postcss-deadcss-1.0.0.tgz#00c68028e4bb13d6af299de55666041f4caf98b6"
+  integrity sha512-NQL/EgQQXEROxaNSmc/juWjUYYT+NcAMPWKNjCbsNZhWGt2SwT8QmkywUqjzglwjqwza5V/Njo6WxYARv2ne1Q==
+
 postcss-discard-comments@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/postcss-discard-comments/-/postcss-discard-comments-4.0.2.tgz#1fbabd2c246bff6aaad7997b2b0918f4d7af4033"
