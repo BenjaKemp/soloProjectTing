@@ -55,7 +55,7 @@ export default {
     userData: {
       username: "",
       password: "",
-    },
+    }
   }),
   methods: {
     existingBool() {
@@ -65,6 +65,7 @@ export default {
       return this.existing;
     },
     async checkForm() {
+      console.log('this.userData     ',this.userData)
       await this.$store.dispatch("users/login", this.userData);
     },
   },

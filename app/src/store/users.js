@@ -110,12 +110,15 @@ const actions = {
    * @example
    *
    */
-  async login({ dispatch, commit }, { email, password }) {
+  async login({ dispatch, commit }, { username, password }) {
+
     try {
       const user = await userService.login({
-        userId: email,
+        username,
         password
       })
+
+      console.log('this is user    ',user)
       if (user.redirectTo) {
         window.location.href = user.redirectTo
       } else {
