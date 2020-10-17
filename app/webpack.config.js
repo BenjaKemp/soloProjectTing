@@ -6,14 +6,6 @@ const { VuetifyLoaderPlugin } = require('vuetify-loader')
 const autoprefixer = require('autoprefixer');
 
 module.exports = env => {
-
-    // Use env.<YOUR VARIABLE> here:
-    // console.log('NODE_ENV: ', env.NODE_ENV); // 'local'
-    // console.log('Production: ', env.production); // true
-
-    console.log('this is env      ',env)
-    console.log('this is process.env.NODE_ENV       ',process.env.NODE_ENV )
-
     return {
         entry: './src/main.js',
         devtool: 'inline-source-map',
@@ -23,7 +15,6 @@ module.exports = env => {
         output: {
             filename: '[name].[contenthash].js',
             path: path.resolve(__dirname, 'dist'),
-            publicPath: "http://localhost:8000/",
         },
         resolve: {
             alias: {
