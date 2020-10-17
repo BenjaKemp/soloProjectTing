@@ -19,7 +19,7 @@ import SoundCloud from "./components/soundcloud/Soundcloud.vue";
 import Settings from "./components/settings/Settings.vue";
 import NavigationDrawer from "./components/navigation/NavigationDrawer.vue";
 import MainHeader from "./components/partials/headers/MainHeader.vue";
-import Signup from "./components/users/Signup.vue";
+
 export default {
   name: "Home",
   components: {
@@ -27,7 +27,6 @@ export default {
     Settings,
     MainHeader,
     NavigationDrawer,
-    Signup,
   },
   computed: {
     ...mapState({
