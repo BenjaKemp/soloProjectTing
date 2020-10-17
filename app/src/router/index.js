@@ -75,9 +75,24 @@ const routes = [{
       requiresAuth: true
     },
     component: () => import( /* webpackChunkName: "about" */ '../components/chat/Chat.vue')
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import( /* webpackChunkName: "about" */ '../components/users/Signup.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import( /* webpackChunkName: "about" */ '../components/users/Login.vue')
   }
 ]
-
 const router = new VueRouter({
   routes
 })

@@ -110,12 +110,15 @@ const actions = {
    * @example
    *
    */
-  async login({ dispatch, commit }, { email, password }) {
+  async login({ dispatch, commit }, { username, password }) {
+
     try {
       const user = await userService.login({
-        userId: email,
+        username,
         password
       })
+
+      console.log('this is user    ',user)
       if (user.redirectTo) {
         window.location.href = user.redirectTo
       } else {
@@ -139,7 +142,6 @@ const actions = {
     }
   },
   async signup({ dispatch, commit }, { firstName, lastName, email, password, username }) {
-    console.log('username     ',username)
     try {
       const user = await userService.signup({
         firstName,
@@ -148,8 +150,6 @@ const actions = {
         password,
         username
       })
-
-      console.log('this is user      ',user)
       commit('loginSuccess', user)
       return {
         status: 'success',

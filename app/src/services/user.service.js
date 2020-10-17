@@ -2,7 +2,7 @@
 
 
 const login = async ({
-  userId,
+  username,
   password
 }) => {
   const requestOptions = {
@@ -11,16 +11,18 @@ const login = async ({
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userId,
+      username,
       password
     })
   }
   try {
     const results = await fetch(`http://localhost:8000/login`, requestOptions)
     const user = await handleResponse(results)
+    console.log('use in thing    ',user)
     if (user.redirectTo) {
       return user
     }
+
     localStorage.setItem('user', JSON.stringify(user))
     return user
   } catch (e) {
