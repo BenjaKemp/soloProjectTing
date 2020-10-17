@@ -14,7 +14,7 @@ class UserClass {
   constructor(name){
 
   }
-  async get(_id){
+  async get(){
    const res = await User.findOne( {_id} , (err, existingUser) => {
       if (err) {
         return next(err);
