@@ -68,7 +68,8 @@ module.exports = env => {
                 },
                 {
                     test: /\.(graphql|gql)$/,
-                    loader: 'webpack-graphql-loader'
+                    exclude: /node_modules/,
+                    loader: 'graphql-tag/loader'
                 },
                 {
                     test: /\.(png|svg|jpg|gif)$/,

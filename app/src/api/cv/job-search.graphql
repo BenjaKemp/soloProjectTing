@@ -1,0 +1,20 @@
+mutation newSearch($input: NewSearchInput!) {
+  newSearch(input: $input) {
+    res {
+      jobId
+      employerId
+      employerName
+      employerProfileId
+      employerProfileName
+      jobTitle
+      locationName
+      minimumSalary
+      maximumSalary
+      currency
+      expirationDate
+      date
+      jobDescription
+      applications
+    }
+  }
+}
