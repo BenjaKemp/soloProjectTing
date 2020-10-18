@@ -20,6 +20,8 @@ import Settings from "./components/settings/Settings.vue";
 import NavigationDrawer from "./components/navigation/NavigationDrawer.vue";
 import MainHeader from "./components/partials/headers/MainHeader.vue";
 
+
+
 export default {
   name: "Home",
   components: {
@@ -82,3 +84,8 @@ export default {
   }),
 };
 </script>
+<style lang="scss">
+@import './styles/main.scss'
+
+
+</style>

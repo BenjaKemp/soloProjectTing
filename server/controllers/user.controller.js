@@ -52,6 +52,8 @@ class UserClass {
     return deletedUser
   }
   static signin = async ({ body: { password, username } }, res, next) => {
+    console.log('here ben    password   ', password)
+    console.log('here ben    username   ', username)
       if (!username || !password) {
           return res.status(422)
                     .send({

@@ -27,82 +27,78 @@ module.exports = env => {
                     loader: 'vue-loader'
                 },
                 {
-                    test: /.css$/,
-                    use: ['style-loader', 'css-loader', 'postcss-loader',
-                       {
-                           loader: `postcss-loader`,
-                           options: {
-                               options: {},
-                           }
-                       }, ]
-                },
-                {
-                    test: /\.s(c|a)ss$/,
-                    use: [
-                        'vue-style-loader',
-                        'css-loader',
-                        {
-                            loader: 'sass-loader',
-                            // Requires sass-loader@^7.0.0
-                            options: {
-                                implementation: require('sass'),
-                                fiber: require('fibers'),
-                                indentedSyntax: true // optional
-                            },
-                            // Requires sass-loader@^8.0.0
-                            options: {
-                                implementation: require('sass'),
-                                sassOptions: {
-                                    fiber: require('fibers'),
-                                    indentedSyntax: true // optional
-                                },
-                            },
+                  test: /\.s(c|a)ss$/,
+                  use: [
+                    'vue-style-loader',
+                    'style-loader',
+                    'css-loader',
+                    {
+                      loader: 'sass-loader',
+                      // Requires sass-loader@^7.0.0
+                      options: {
+                        implementation: require('sass'),
+                        fiber: require('fibers'),
+                        indentedSyntax: true // optional
+                      },
+                      // Requires sass-loader@^8.0.0
+                      options: {
+                        implementation: require('sass'),
+                        sassOptions: {
+                          fiber: require('fibers'),
+                          indentedSyntax: true // optional
                         },
-                    ],
+                      },
+                    },
+                  ],
                 },
                 {
-                    test: /\.(woff|woff2|eot|ttf|otf)$/,
-                    use: [
-                        'file-loader',
-                    ],
+                  test: /.css$/,
+                  use: [
+                      'vue-style-loader',
+                      'css-loader',
+                  ]
                 },
                 {
-                    test: /\.(graphql|gql)$/,
-                    exclude: /node_modules/,
-                    loader: 'graphql-tag/loader'
+                  test: /\.(woff|woff2|eot|ttf|otf)$/,
+                  use: [
+                      'file-loader',
+                  ],
                 },
                 {
-                    test: /\.(png|svg|jpg|gif)$/,
-                    use: [
-                        'file-loader',
-                    ],
+                  test: /\.(graphql|gql)$/,
+                  loader: 'webpack-graphql-loader'
                 },
                 {
-                    test: /\.(csv|tsv)$/,
-                    use: [
-                        'csv-loader',
-                    ],
+                  test: /\.(png|svg|jpg|gif)$/,
+                  use: [
+                      'file-loader',
+                  ],
                 },
                 {
-                    test: /\.html$/i,
-                    loader: 'html-loader',
+                  test: /\.(csv|tsv)$/,
+                  use: [
+                      'csv-loader',
+                  ],
                 },
                 {
-                    test: /\.m?js$/,
-                    exclude: /(node_modules|bower_components)/,
-                    use: {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['@babel/preset-env']
-                        }
+                  test: /\.html$/i,
+                  loader: 'html-loader',
+                },
+                {
+                  test: /\.m?js$/,
+                  exclude: /(node_modules|bower_components)/,
+                  use: {
+                    loader: 'babel-loader',
+                    options: {
+                      presets: ['@babel/preset-env']
                     }
+                  }
                 },
-
                 {
-                    test: /\.xml$/,
-                    use: [
-                        'xml-loader',
-                    ],
+                  test: /\.xml$/,
+                  use: [
+                    'xml-loader',
+                  ],
                 }
             ],
 
