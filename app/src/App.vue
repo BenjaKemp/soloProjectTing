@@ -84,8 +84,7 @@ export default {
   }),
 };
 </script>
-<style lang="scss">
-@import './styles/main.scss'
+<style lang="text/scss">
 
 
 </style>

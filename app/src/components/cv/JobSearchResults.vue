@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mega_test">
 {{job}}
   </div>
 </template>
@@ -15,3 +15,12 @@
     },
   }
 </script>
+<style lang="scss">
+
+.mega_test
+{
+  font: $blue
+}
+
+</style>
+

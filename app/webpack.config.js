@@ -38,7 +38,12 @@ module.exports = env => {
                       options: {
                         implementation: require('sass'),
                         fiber: require('fibers'),
-                        indentedSyntax: true // optional
+                        data: '@import "./styles/base/_typography.scss";',
+                        indentedSyntax: true, // optional
+                        resources: './styles/main.scss',
+                        includePaths: [
+                          path.join(__dirname, 'soloprojectting/app/src/styles')
+                        ]
                       },
                       // Requires sass-loader@^8.0.0
                       options: {
@@ -66,7 +71,10 @@ module.exports = env => {
                 },
                 {
                   test: /\.(graphql|gql)$/,
-                  loader: 'webpack-graphql-loader'
+                  loader: 'webpack-graphql-loader',
+                  options: {
+                    output: "document"
+                  }
                 },
                 {
                   test: /\.(png|svg|jpg|gif)$/,
