@@ -10,6 +10,7 @@ import 'vuetify/dist/vuetify.min.css'
 import sticky from './styles/Directives/sticky'
 
 import VueSocketIO from 'vue-socket.io'
+import './styles/main.scss'
 
 Vue.use(new VueSocketIO({
   debug: true,

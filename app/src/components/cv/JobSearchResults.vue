@@ -16,9 +16,9 @@
   }
 </script>
 <style lang="scss">
+@import '../../styles/base/_typography.scss';
 
-.mega_test
-{
+.mega_test {
   font: $blue
 }
 
