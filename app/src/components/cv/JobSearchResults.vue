@@ -1,6 +1,6 @@
 <template>
   <div class="mega_test">
-{{job}}
+  {{job}}
   </div>
 </template>
 
@@ -16,11 +16,8 @@
   }
 </script>
 <style lang="scss">
-@import '../../styles/base/_typography.scss';
+@import '../../styles/components/cv/cv.scss';
 
-.mega_test {
-  font: $blue
-}
 
 </style>
 

@@ -1,0 +1,28 @@
+@import '../../abstracts/mixins';
+@import '../../../scss/helpers/variables.scss';
+
+.main-header-container {
+    height: 50px;
+    display: flex;
+    width: 100%;
+    border: 2px solid $theme-black;
+    background-color: $theme-charcoal;
+    margin: 0px;
+    padding: 2px;
+    box-sizing: border-box;
+    .header-button {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        height:50px;
+        width:50px;
+        border-radius: 5px;
+        border: black solid;
+        background-color: $theme-dark-pink;
+        cursor: pointer;
+        &:hover {
+            @include transition(.4s);
+            background-color: $theme-light-pink;
+        }
+    }
+}

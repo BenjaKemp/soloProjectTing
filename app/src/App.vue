@@ -1,32 +1,19 @@
 <template>
-  <!-- <v-app v-if="!authenticated">
-      <signup />
-  </v-app>-->
-  <v-app>
+  <div>
     <main-header />
-    <navigation-drawer />
-    <v-main>
-      <v-container fluid>
-        <router-view />
-      </v-container>
-    </v-main>
-  </v-app>
+    <!-- <navigation-drawer /> -->
+    <!-- <router-view /> -->
+  </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from "vuex";
-import SoundCloud from "./components/soundcloud/Soundcloud.vue";
-import Settings from "./components/settings/Settings.vue";
 import NavigationDrawer from "./components/navigation/NavigationDrawer.vue";
 import MainHeader from "./components/partials/headers/MainHeader.vue";
-
-
 
 export default {
   name: "Home",
   components: {
-    SoundCloud,
-    Settings,
     MainHeader,
     NavigationDrawer,
   },

@@ -4,13 +4,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import vuetify from './plugins/vuetify';
 import apolloProvider from './api'
-import 'vuetify/dist/vuetify.min.css'
 import sticky from './styles/Directives/sticky'
 
 import VueSocketIO from 'vue-socket.io'
-import './styles/main.scss'
 
 Vue.use(new VueSocketIO({
   debug: true,
@@ -29,7 +26,6 @@ Vue.directive('sticky', sticky)
 new Vue({
   router,
   store,
-  vuetify,
   apolloProvider,
   render: h => h(App)
 }).$mount('#app')

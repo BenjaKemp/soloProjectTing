@@ -1,15 +1,14 @@
-<template>
-  <v-app-bar class="navbar-container" app clipped-left dense>
-    <div v-for="button in buttons" :key="button.id">
-      <router-link :to="{name: button.route}" v-bind:class="{ hidden: button.hidden }" >
-        <button v-on="handleLogout()" >
-            {{button.title}}
-        </button>   
+<template >
+  <div class="main-header-container" >
+    i only want one header
+    <div v-for="button in buttons" :key="button.id" class="header-button">
+      <router-link :to="{name: button.route}">
       </router-link>        
     </div>
-  </v-app-bar>
+  </div>
 </template>
 <script>
+
 export default {
   data() {
     return {
@@ -23,14 +22,12 @@ export default {
   },
   methods: {
     handleLogout() {
-      console.log('this is logoiut')
       localStorage.removeItem('user');
     }
   }
 };
 </script>
-<style>
-.hidden {
-  display: none ;
-}
+<style lang="scss">
+@import '../../../styles/components/partials/mainheader.scss';
+
 </style>

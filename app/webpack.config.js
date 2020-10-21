@@ -2,7 +2,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { VuetifyLoaderPlugin } = require('vuetify-loader')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 
@@ -39,37 +38,24 @@ module.exports = env => {
                    loader: 'babel-loader'
                  }
                },
-               {
-                 test: /\.scss$/,
-                 use: [
-                   MiniCssExtractPlugin.loader,
-                   {
-                     loader: 'css-loader',
-                     options: {
-                       sourceMap: true,
-                     }
-                   },
-                   {
-                     loader: 'postcss-loader',
-                     options: {
-                       sourceMap: true,
-                       plugins: [
-                         require('autoprefixer')()
-                       ]
-                     }
-                   },
-                   {
-                     loader: 'resolve-url-loader'
-                   },
-                   {
-                     loader: 'sass-loader',
-                     options: {
-                       sourceMap: true,
-                       sourceMapContents: true,
-                     }
-                   }
-                 ]
-               },
+              {
+                test: /\.s[ac]ss$/i,
+                use: [
+                  // Creates `style` nodes from JS strings
+                  'style-loader',
+                  // Translates CSS into CommonJS
+                  'css-loader',
+                  // Compiles Sass to CSS
+                  {
+                    loader: 'sass-loader',
+                    options: {
+                      sourceMap: true,
+                      data: '@import "./src/scss/helpers/variables";',
+                      sourceMapContents: true
+                    }
+                  }
+                ],
+              },
                {
                  test: /\.(graphql|gql)$/,
                  exclude: /node_modules/,
@@ -104,7 +90,6 @@ module.exports = env => {
                 `
             }),
             new VueLoaderPlugin(),
-            new VuetifyLoaderPlugin()
         ],
         optimization: {
             runtimeChunk: 'single',

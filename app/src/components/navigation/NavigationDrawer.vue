@@ -1,26 +1,5 @@
 <template>
-  <v-navigation-drawer
-    app
-    clipped
-    v-model="drawer"
-    :color="color"
-    :right="right"
-    :permanent="permanent"
-    :src="bg"
-    absolute
-    dark
-  >
-    <v-list dense nav class="py-0">
-      <v-list-item v-for="item in items" :key="item.title" link :to="item.route" class="list-item-white-dashed">
-        <v-list-item-icon>
-          <v-icon>{{ item.icon }}</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-    </v-list>
-  </v-navigation-drawer>
+
 </template>
 
 <script>
@@ -56,11 +35,5 @@ export default {
   },
 };
 </script>
-<style>
-.list-item-white-dashed {
-    color: white;
-    height: 20px;
-    padding: 20px;
-    border: dashed;
-}
+<style lang="scss">
 </style>
