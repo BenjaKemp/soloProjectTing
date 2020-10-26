@@ -1,15 +1,19 @@
 <template>
-  <div>
+  <div class="app_container">
     <main-header />
-    <!-- <navigation-drawer /> -->
-    <!-- <router-view /> -->
+    <div class="total_container">
+      <navigation-drawer />
+      <transition :name="transitionName">
+        <router-view />
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapGetters } from "vuex";
 import NavigationDrawer from "./components/navigation/NavigationDrawer.vue";
-import MainHeader from "./components/partials/headers/MainHeader.vue";
+import MainHeader from "./components/headers/MainHeader.vue";
 
 export default {
   name: "Home",
@@ -30,6 +34,15 @@ export default {
       console.log("this.user     ", this.user);
       return false;
     },
+  },
+  watch: {
+  '$route' (to, from) {
+    console.log('this is to    ',to)
+    console.log('this is from    ',from)
+    const toDepth = to.path.split('/').length
+    const fromDepth = from.path.split('/').length
+    this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+    }
   },
   beforeCreate() {
     // The beforeCreate hook runs at the very initialization of your component. data has not been made reactive, and events have not been set up yet:
@@ -71,7 +84,13 @@ export default {
   }),
 };
 </script>
-<style lang="text/scss">
-
-
+<style lang="scss">
+@import './styles/base/reset';
+  .total_container {
+    display: flex;
+    flex-direction: inherit;
+  }
+  .app_container{
+    height: 100vh;
+  }
 </style>

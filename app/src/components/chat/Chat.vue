@@ -1,6 +1,6 @@
 <template>
   <div>
-    <draggable-div class="col-11 drag-chat-container" v-for="room in rooms" v-bind:key="room">
+    <lw-draggable-div class="col-11 drag-chat-container" v-for="room in rooms" v-bind:key="room">
       <template slot="header">{{room}}</template>
       <template slot="main">
         <ul>
@@ -13,17 +13,17 @@
           <button class="input-button">Send</button>
         </v-form>
       </template>
-    </draggable-div>
+    </lw-draggable-div>
   </div>
 </template>
 
 <script>
-import DraggableDiv from "../partials/DraggableDiv.vue";
+import LwDraggableDiv from "../partials/LwDraggableDiv.vue";
 import moment from "moment";
 export default {
   name: "Chat",
   components: {
-    DraggableDiv,
+    LwDraggableDiv,
   },
   data() {
     return {

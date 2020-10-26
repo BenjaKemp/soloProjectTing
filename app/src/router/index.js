@@ -4,13 +4,14 @@ import App from '../App.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+  {
     path: '/',
-    name: 'App',
-    component: App,
+    name: 'dashboard',
     meta: {
       requiresAuth: true
-    }
+    },
+    component: () => import( /* webpackChunkName: "about" */ '../components/dashboard/Dashboard.vue')
   },
   {
     path: '/soundcloud',
@@ -36,14 +37,7 @@ const routes = [{
     },
     component: () => import( /* webpackChunkName: "about" */ '../components/photo/Photos.vue')
   },
-  {
-    path: '/dashboard',
-    name: 'dashboard',
-    meta: {
-      requiresAuth: true
-    },
-    component: () => import( /* webpackChunkName: "about" */ '../components/dashboard/Dashboard.vue')
-  },
+
   {
     path: '/blog',
     name: 'blog',
@@ -77,6 +71,14 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../components/chat/Chat.vue')
   },
   {
+    path: '/toolkit',
+    name: 'toolkit',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import( /* webpackChunkName: "about" */ '../components/toolkit/ToolKit.vue')
+  },
+  {
     path: '/signup',
     name: 'signup',
     meta: {
@@ -96,45 +98,5 @@ const routes = [{
 const router = new VueRouter({
   routes
 })
-
-// router.beforeEach((to, from, next) => {
-//   console.log('to.matched inside requires auth', to.matched)
-//   if (to.matched.some(record => record.meta.requiresAuth)) {
-//     console.log('this is before the route')
-
-//     if (localStorage.getItem('jwt') == null) {
-//       next({
-//         path: '/login',
-//         params: {
-//           nextUrl: to.fullPath
-//         }
-//       })
-//     } else {
-//       let user = JSON.parse(localStorage.getItem('user'))
-//       if (to.matched.some(record => record.meta.is_admin)) {
-//         if (user.is_admin == 1) {
-//           next()
-//         } else {
-//           next({
-//             name: 'userboard'
-//           })
-//         }
-//       } else {
-//         next()
-//       }
-//     }
-//   } else if (to.matched.some(record => record.meta.guest)) {
-//     console.log('to.matched is a guest', to.matched)
-//     if (localStorage.getItem('jwt') == null) {
-//       next()
-//     } else {
-//       next({
-//         name: 'userboard'
-//       })
-//     }
-//   } else {
-//     next()
-//   }
-// })
 
 export default router

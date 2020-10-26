@@ -1,39 +1,35 @@
 <template>
+<div class="navigation_container">
+  <router-link tag="div" v-for="item in items" :key="item.title" class="navigation_item" :to="item.route" @click="handleClick" >
+  </router-link>
+</div>
 
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      drawer: true,
       items: [
-        { title: "Dashboard", icon: "mdi-view-dashboard", route: "dashboard" },
-        { title: "Photos", icon: "mdi-image", route: "photos" },
-        { title: "CV", icon: "mdi-help-box", route: "cv" },
-        { title: "Blog", icon: "mdi-help-box", route: "blog" },
-        { title: "Soundcloud", icon: "mdi-help-box", route: "soundcloud" },
-        { title: "Newsletter", icon: "mdi-help-box", route: "newsletter" },
-        { title: "Players", icon: "mdi-help-box", route: "players" },
-        { title: "Chat", icon: "mdi-help-box", route: "chat" },
+        { title: "Photos", route: "photos" },
+        { title: "CV",  route: "cv" },
+        { title: "Blog",  route: "blog" },
+        { title: "ToolKit",  route: "toolkit" },
+        { title: "Players",  route: "players" },
+        { title: "Chat",  route: "chat" },
       ],
-      color: "primary",
-      colors: ["primary", "blue", "success", "red", "teal"],
-      right: false,
-      permanent: false,
-      miniVariant: true,
-      expandOnHover: true,
-      background: false,
-    };
+    }
   },
-  computed: {
-    bg() {
-      return this.background
-        ? "https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
-        : undefined;
-    },
-  },
+  methods: {
+      handleClick() {
+        console.log('hi Ben')
+      }
+  }
 };
 </script>
 <style lang="scss">
+@import '../../styles/components//navigation/navigation.scss';
+
+
 </style>

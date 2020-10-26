@@ -50,8 +50,7 @@ module.exports = env => {
                     loader: 'sass-loader',
                     options: {
                       sourceMap: true,
-                      data: '@import "./src/scss/helpers/variables";',
-                      sourceMapContents: true
+                      additionalData: '@import "./src/scss/helpers/variables";'
                     }
                   }
                 ],

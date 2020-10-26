@@ -1,0 +1,101 @@
+// Button-specific variables
+// … include any button-specific:
+// - mixins
+// - placeholders
+// - functions
+
+/**
+ * Buttons
+ */
+.button {
+    // … etc.
+    /**
+   * Inlined buttons on large screens
+   */
+    // @include respond-to('medium') {
+    //     display: inline-block;
+    // }
+}
+.btn {
+    width: 9rem;
+    height: 3rem;
+    border-radius: 5px;
+    box-shadow: 2px 5px 10px #888888;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(150%);
+    }
+
+    &-success {
+      background-color: #5cb85c;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight:bold;
+    }
+    &-primary{
+        background-color: #0275d8;
+        font-family: 'Times New Roman', Times, serif
+    }
+    &-secondary {
+        background-color: greenyellow;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    &-danger {
+        background-color: #d9534f;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    &-warning {
+        background-color: #f0ad4e;
+        font-weight:bold;
+        font-style: oblique;
+
+    }
+    &-info {
+        background-color: #5bc0de;
+        font-weight:bold;
+    }
+    &-light {
+        background-color: #f7f7f7;
+         font-style: normal;
+    }
+    &-dark {
+        background-color: #292b2c;
+          font-style: italic;
+          font-feature-settings: "c2sc",
+          "smcp";
+
+          color: white;
+    }
+    .sm {
+        width: 3rem;
+        height: 1rem;
+
+    }
+    .md {
+        width: 6rem;
+        height: 2rem;
+    }
+    .lg {
+        width: 9rem;
+        height: 3rem;
+    }
+ 
+}
+
+/**
+ * Icons within buttons
+ */
+.button>svg {
+    fill: currentcolor;
+    // … etc.
+}
+
+/**
+ * Inline button
+ */
+.button--inline {
+    display: inline-block;
+}
