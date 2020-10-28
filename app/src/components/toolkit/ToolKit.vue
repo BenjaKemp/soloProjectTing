@@ -36,6 +36,7 @@
         </transition>
       </div>
     </div>
+    <div class="test">Hi ben</div>
 </div>
 </template>
 
@@ -145,6 +146,9 @@ export default {
       transform: translate(-100%, 0);
     }
   }
+}
+.test{
+  color: $Neon-Blue;
 }
 
 </style>

@@ -1,6 +1,8 @@
 @import '../../abstracts/mixins';
 @import '../../../scss/helpers/variables.scss';
 
+
+
 .navigation_container {
 background-color: $theme-charcoal;
 width: 70px;
@@ -28,5 +30,12 @@ justify-content: space-between;
 
       background-color: $theme-dark-pink;
     }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .navigation_container {
+    display: none;
+    background-color: brown;
   }
 }
