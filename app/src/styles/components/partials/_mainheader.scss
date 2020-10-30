@@ -7,22 +7,17 @@
     width: 100%;
     background-color: $theme-charcoal;
     margin: 0px;
-    padding: 2px;
+    padding: 10px;
     box-sizing: border-box;
-    .header-button {
-        margin: 10px;
-        align-self: flex-end;
-        font-family: $base-font;
-        justify-items: center;
-        height:50px;
-        width:100px;
-        border-radius: 5px;
-        border: black solid;
-        background-color: $theme-dark-pink;
-        cursor: pointer;
-        &:hover {
-            @include transition(.4s);
-            background-color: $theme-light-pink;
+
+}
+
+@media only screen and (max-width: 767px) {
+    .main-header-container {
+        background-color: red;
+        .btn {
+            display: none;
         }
     }
 }
+

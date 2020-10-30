@@ -4,18 +4,13 @@
 
 
 .navigation_container {
-background-color: $theme-charcoal;
-width: 70px;
-display: flex;
-flex-direction: column;
-height: 100vh;
-align-items: center;
-justify-content: space-between;
-  // &:hover {
-  //   width: 200px;
-  //   @include transition(all 0.4s ease-in-out);
-  //   background-color: $theme-charcoal;
-  // }
+  background-color: $theme-charcoal;
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
   .navigation_item {
     height: 60px;
     width: 60px;
@@ -25,17 +20,13 @@ justify-content: space-between;
     border-radius: 5px;
     cursor: pointer;
     &:hover {
-      // delay of two seconds
       @include transition(.3s);
-
-      background-color: $theme-dark-pink;
+        background-color: $theme-dark-pink;
     }
   }
 }
-
 @media only screen and (max-width: 767px) {
   .navigation_container {
     display: none;
-    background-color: brown;
   }
 }

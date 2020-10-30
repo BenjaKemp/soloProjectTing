@@ -1,6 +1,6 @@
 <template>
-  <div class="mega_test">
-  {{job}}
+  <div >
+
   </div>
 </template>
 
@@ -16,7 +16,6 @@
   }
 </script>
 <style lang="scss">
-@import '../../styles/components/cv/cv.scss';
 
 
 </style>

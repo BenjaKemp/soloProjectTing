@@ -1,21 +1,4 @@
-// Button-specific variables
-// … include any button-specific:
-// - mixins
-// - placeholders
-// - functions
 
-/**
- * Buttons
- */
-.button {
-    // … etc.
-    /**
-   * Inlined buttons on large screens
-   */
-    // @include respond-to('medium') {
-    //     display: inline-block;
-    // }
-}
 .btn {
     width: 9rem;
     height: 3rem;
