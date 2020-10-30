@@ -9,6 +9,8 @@ const { models, mongoose } = require('./database')
 const router = require('./router');
 const controllers = require('./controllers')
 require('dotenv').config();
+const redis = require('./redis')
+const redisConnection = redis.getConnection()
 // const config = require('../app/webpack.config.js');
 // const index = require('../app/dist/index.html');
 // const compiler = webpack(config);
@@ -22,6 +24,8 @@ app.use(bodyParser.json({
   type: '*/*'
 }));
 
+
+
 const server = new ApolloServer({
   typeDefs: schema,
   resolvers,
@@ -33,7 +37,8 @@ const server = new ApolloServer({
       lastname: 'Kemp',
       messageIds: [1]
     },
-    mongoose
+    mongoose,
+    redisConnection
 
   },
 });
