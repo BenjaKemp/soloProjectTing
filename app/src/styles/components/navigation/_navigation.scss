@@ -1,0 +1,32 @@
+@import '../../abstracts/mixins';
+@import '../../../scss/helpers/variables.scss';
+
+
+
+.navigation_container {
+  background-color: $theme-charcoal;
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  .navigation_item {
+    height: 60px;
+    width: 60px;
+    border: 3px solid black;
+    margin: 2px 0px 2px 0px;
+    background-color: $theme-light-pink;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      @include transition(.3s);
+        background-color: $theme-dark-pink;
+    }
+  }
+}
+@media only screen and (max-width: 767px) {
+  .navigation_container {
+    display: none;
+  }
+}

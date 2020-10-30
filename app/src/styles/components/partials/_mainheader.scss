@@ -1,0 +1,23 @@
+@import '../../abstracts/mixins';
+@import '../../../scss/helpers/variables.scss';
+
+.main-header-container {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    background-color: $theme-charcoal;
+    margin: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+
+}
+
+@media only screen and (max-width: 767px) {
+    .main-header-container {
+        background-color: red;
+        .btn {
+            display: none;
+        }
+    }
+}
+

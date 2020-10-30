@@ -1,5 +1,6 @@
 <template>
-  <v-app id="inspire">
+<div>this is the signup</div>
+  <!-- <v-app id="inspire">
     <v-main>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -78,7 +79,7 @@
         </v-row>
       </v-container>
     </v-main>
-  </v-app>
+  </v-app> -->
 </template>
 
 <script>

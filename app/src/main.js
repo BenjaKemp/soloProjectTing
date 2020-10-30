@@ -4,10 +4,27 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import vuetify from './plugins/vuetify';
 import apolloProvider from './api'
-import 'vuetify/dist/vuetify.min.css'
 import sticky from './styles/Directives/sticky'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faUserSecret,
+  faTachometerAlt,
+  faFileVideo,
+  faFile,
+  faMusic,
+  faCommentDots
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUserSecret,
+  faTachometerAlt,
+  faFileVideo,
+  faFile,
+  faMusic,
+  faCommentDots)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 import VueSocketIO from 'vue-socket.io'
 
@@ -28,7 +45,6 @@ Vue.directive('sticky', sticky)
 new Vue({
   router,
   store,
-  vuetify,
   apolloProvider,
   render: h => h(App)
 }).$mount('#app')

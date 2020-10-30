@@ -1,0 +1,21 @@
+@mixin transition($duration) {
+    -webkit-transition: $duration;
+    -moz-transition: $duration;
+    -ms-transition: $duration;
+    -o-transition: $duration;
+    transition: $duration;
+}
+
+@mixin prefix($property, $value, $prefixes) {
+    @each $prefix in $prefixes {
+        -#{$prefix}-#{$property}: $value;
+    }
+
+    #{$property}: $value;
+}
+
+$screen-breakpoints: (xs: 0,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px) !default;
