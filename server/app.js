@@ -11,6 +11,9 @@ const controllers = require('./controllers')
 require('dotenv').config();
 const redis = require('./redis')
 const redisConnection = redis.getConnection()
+redisConnection.on('connect', function() {
+  console.log(`connected to redis on port ${this.options.port}`)
+  });
 // const config = require('../app/webpack.config.js');
 // const index = require('../app/dist/index.html');
 // const compiler = webpack(config);

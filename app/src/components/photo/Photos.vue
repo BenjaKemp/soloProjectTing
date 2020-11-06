@@ -3,7 +3,9 @@
   <div class="container-fluid">
   <div class="container__row">
     <div v-for="element in testArray" :key="element.id" class="container__col-sm-12 container__col-md-4 container__col-lg-3">
-      {{element.name}}
+      <div class="element">
+
+      </div>
     </div>
   </div>
 </div>
@@ -82,12 +84,15 @@ $grid__cols: 12;
   &--fluid {
     margin: 0;
     max-width: 100%;
+    box-sizing: content-box;
     
   }
   &__row {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    box-sizing: content-box;
+    // grid-gap: 10px;
   }
   @each $modifier , $breakpoint in $map-grid-props {
     @include create-col-classes($modifier, $grid__cols, $breakpoint);
@@ -106,22 +111,27 @@ $grid__cols: 12;
     }
   }
 
+  .element {
+    width: 80%;
+    height: 80%;
+    background-color: blue;
+    border-radius: 8px;
+      box-shadow: 0 2px 16px 0 rgba(33, 43, 54, 0.08), 0 0 0 1px rgba(6, 44, 82, 0.1);
+  }
+
   @at-root {
     [class*='container__col-'] {
       &.higher {
         min-height: 60px;
       }
+      display: flex;
       width: 256px;
       height: 237px;
-      border-radius: 8px;
-      box-shadow: 0 2px 16px 0 rgba(33, 43, 54, 0.08), 0 0 0 1px rgba(6, 44, 82, 0.1);
-      background-color: #ffffff;
-      min-height: 30px;
-      outline: 1px solid #ffcc5c;
-      margin: 10px 0;
-      display: flex;
       align-items: center;
       justify-content: space-around;
+      background-color: #ffffff;
+      outline: 1px solid #ffcc5c;
+      // grid-gap: 50px;
     }
   }
 }

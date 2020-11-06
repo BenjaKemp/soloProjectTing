@@ -15,6 +15,7 @@ const search = async (searchinput) => {
     try {
         const results = await fetch(`https://www.reed.co.uk/api/1.0/search?${searchString}`, requestOptions)
         const resultsJson = await results.json()
+        console.log('results in serach     ', resultsJson)
         return resultsJson
     } catch (e) {
         throw e

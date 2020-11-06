@@ -3,9 +3,11 @@ const searchJooble = require('../services/websearches/jooble.search')
 
 class SearchClass {
 static async metaSearch(input){
+    console.log('this is input in the back end    ',input)
     const res = await search(input)
-    // const joobleRes = await searchJooble(input)'
-    // console.log('this is joobl        ', joobleRes)
+
+    console.log('this is the res      ',res)
+
     return res
 }
 }

@@ -9,7 +9,6 @@ class Redis {
     }
     getConnection() {
         if (this.connected){
-            console.log('logging many')
             return this.client
         } 
         else {
@@ -17,7 +16,6 @@ class Redis {
                 host: this.host,
                 port: this.port
             })
-            console.log('logging once')
             this.connected = true
             return this.client
         }
