@@ -21,4 +21,11 @@ $Neon-Blue:#5863f8;
 
 /// fonts
 $roboto-Regular: 'robotoregular';
-$base-font: "Courier New", Courier, monospace;
+$base-font: "Lucida Console", Monaco, monospace;
+
+
+$grid__bp-md: 768;
+$grid__bp-lg: 992;
+
+$map-grid-props: ('-sm': 0, '-md': $grid__bp-md, '-lg': $grid__bp-lg);
+$map-grid-cols: ('-sm': 0, '-md': $grid__bp-md, '-lg': $grid__bp-lg);

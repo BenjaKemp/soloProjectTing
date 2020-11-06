@@ -23,7 +23,6 @@ const mutations = {
 }
 const actions = {
     async search({ commit }, whatever) {
-        console.log('whatever      ', whatever)
         try {
             const query = await apolloClient.mutate({
                 mutation: jobSearch,

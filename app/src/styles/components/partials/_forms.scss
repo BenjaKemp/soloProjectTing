@@ -1,0 +1,18 @@
+.lw-text-input {
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.lw-checkbox {
+    width: 25px;
+    border: black solid;
+    height: 25px;
+    appearance: checkbox;
+    display: inline-block;
+}
+.lw-checkbox-label {
+    font-family: $base-font;
+    display: block;
+} 

@@ -2,8 +2,7 @@
     <div class="components-container">
       Hello ben
       <job-search-bar></job-search-bar>
-      <!-- {{search}} -->
-      <job-search-results v-for="job in search" v-bind:key="job.id" v-bind:job="job"></job-search-results>
+      <job-search-results></job-search-results>
     </div>
 </template>
 
@@ -27,3 +26,10 @@ import { mapState } from 'vuex'
     },
   }
 </script>
+<style lang="scss">
+.components-container{
+  width:100%;
+  padding: 50px;
+}
+
+</style>

@@ -7,6 +7,7 @@ import store from './store'
 import apolloProvider from './api'
 import sticky from './styles/Directives/sticky'
 import { library } from '@fortawesome/fontawesome-svg-core'
+
 import {
   faUserSecret,
   faTachometerAlt,
